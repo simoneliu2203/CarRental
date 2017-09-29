@@ -1,4 +1,4 @@
-<?php include("index.php"); ?>
+<?php include("header.php"); ?>
 
         <div align="center" id = "main">
             <h1>About Seahawk Rent-A-Car</h1>
