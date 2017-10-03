@@ -8,27 +8,27 @@
 <style>
 
  #table{
-	 margin-top: 50px; 
-	 margin-left: 5% ;
+	 margin-top: 100px; 
+	 margin-left: 60% ;
 	 border: 4px solid black; 
 	 border-radius: 25px;
 	 border-collapse: separate;
 	}
 	
  #boxc1{
-	background-color: antiquewhite; 
-	opacity: 1;
+	background-color: ghostwhite; 
+	opacity: 0.8;
 	 border-top-left-radius: 20px;
 	 border-top-right-radius: 20px;
 	}
 
  #boxc2{
-	background-color: lightskyblue; 
+	background-color: lightgray; 
 	opacity: 0.9;
 	}
 #boxc3{
-	background-color: darkblue; 
-	text-decoration-color: aliceblue;
+	background-color: dimgray; 
+	text-decoration-color: black;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
 	}
@@ -51,7 +51,7 @@
 </head>
 
 
-<table width="600" height="400" border="1" id="table">
+<table width="400" height="400" border="1" id="table">
   <tbody>
     <tr>
       <td id="boxc1" colspan="3" style="font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="8" color="red" align="center">Select date</td>
@@ -65,7 +65,7 @@
       <td id="boxc2"><input style="text-align: center" type="text" name="dropoff" placeholder="mm/dd/yyyy" id="Datepicker2"></td>
     </tr>
     <tr>
-      <td id="boxc3" colspan="3"><button style="background-color: darkblue; color:white; border-color: white; width: 200px; font-size: 20px" type="submit" name="search">Search</button></td>
+      <td id="boxc3" colspan="3"><button style="background-color: black; color:white; border-color: white; width: 100px; font-size: 20px" type="submit" name="search">Search</button></td>
     </tr>
   </tbody>
 </table>

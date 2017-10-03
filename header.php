@@ -56,7 +56,7 @@ body {margin:0;}
 
 <i><font size="6" align="center"><i><font size="6" align="center">
 <div class="row" style="background-color:white;padding:1px hspace=20">
-  <div class="col-lg-3"><img src="logo.png" width="350" height="80" align="left"></div>
+  <div class="col-lg-3"><img src="Images/logo.png" width="350" height="80" align="left"></div>
   <div class="col-lg-5"><i><font size="5" align="center"><br/></br/></div>
   <div class="col-lg-4"><i><font size="3" align="center">Contact: (000)123-4567<br/>Location: Somewhere in Wilmington</br/>  </div>
 </div>
