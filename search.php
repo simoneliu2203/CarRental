@@ -24,6 +24,7 @@
 
  #boxc2{
 	background-color: lightgray; 
+	border: none;
 	opacity: 0.9;
 	}
 #boxc3{
@@ -40,6 +41,7 @@
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.datepicker.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.slider.min.css" rel="stylesheet" type="text/css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -48,9 +50,10 @@
 <![endif]-->
 <script src="jQueryAssets/jquery-1.11.1.min.js"></script>
 <script src="jQueryAssets/jquery.ui-1.10.4.datepicker.min.js"></script>
+<script src="jQueryAssets/jquery.ui-1.10.4.slider.min.js"></script>
 </head>
 
-
+<form method="post" action="carListing.php">
 <table width="400" height="400" border="1" id="table">
   <tbody>
     <tr>
@@ -65,19 +68,21 @@
       <td id="boxc2"><input style="text-align: center" type="text" name="dropoff" placeholder="mm/dd/yyyy" id="Datepicker2"></td>
     </tr>
     <tr>
-      <td id="boxc3" colspan="3"><button style="background-color: black; color:white; border-color: white; width: 100px; font-size: 20px" type="submit" name="search">Search</button></td>
+      <td id="boxc3" colspan="3"><button style="background-color: black; color:white; border-color: white; width: 100px; font-size: 20px" type="submit" id="submit" name="search">Search</button></td>
     </tr>
   </tbody>
 </table>
+</form>
+    
 
 
-
-
-
-
- 
     
     
+<script type="text/javascript">
+$(function() {
+	$( "#Slider1" ).slider(); 
+});
+</script>
 </body>
 <script type="text/javascript">
 $(function() {
