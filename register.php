@@ -80,7 +80,7 @@ body
       <td id="boxc2"><input type="password" id="password_2" name="password_2"></td>
     </tr>
     <tr>
-      <td colspan="2"><input type="submit" name="submit" id="submit" value="Register" style="background-color: white; font-size: 20px; width: 100px; color: blue"></td>
+      <td colspan="2"><input type="submit" name="submit" id="submit" value="Sign up" style="background-color: white; font-size: 20px; width: 100px; color: blue"></td>
     </tr>
     <tr>
       <td colspan="2" id="boxc3"><font> Already a member? </font><a href="login.php">Sign in</a></td>
@@ -114,7 +114,7 @@ if (isset($_POST['submit'])) {
 
 	if (mysqli_num_rows($usernameSQL) == 1){
 		echo "<div align='center'>Username '$username' is already taken</div>";
-		//echo "<br>";
+		array_push($errors, "Uername taken");
 	}
 
 	if (mysqli_num_rows($emailSQL) == 1){
@@ -128,17 +128,20 @@ if (isset($_POST['submit'])) {
 	if (count($errors) == 0) {
 		//$password = md5($password_1);//encrypt the password before saving in the database
 		
-		//$cid = "c_".uniqid();
 		$query = "INSERT INTO users (username, email, password, acc_type) 
 				  VALUES('$username', '$email', '$password_1','customer')";
 		
 		$query2 = "INSERT INTO customers (c_username) VALUES('$username')";
+		$query3 = "INSERT INTO bankaccount (c_username) VALUES('$username')";
+
 		
 		mysqli_query($db, $query);
 		mysqli_query($db, $query2);
+		mysqli_query($db, $query3);
+		
 		$_SESSION['username'] = $username;
 		//$_SESSION['success'] = "You are now logged in";
-		echo "<div align='center'>You're a member now!</div>";
+		echo "<div align='center'>You're a member now! Please Sign in!</div>";
 	}
 
 }

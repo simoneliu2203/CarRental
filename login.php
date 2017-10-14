@@ -25,7 +25,7 @@
 	}
 	
  #boxc3{
-	background-color: dimgray; 
+	background-color: palegreen; 
 	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;
 	}
@@ -34,7 +34,7 @@
 </style>
 
 <form method="post" action="">
-<table id="table" width="500" height="400" border="1" style="margin-top: 50px; margin-left: auto; margin-right: auto; border-radius: 20px">
+<table id="table" width="500" height="350" border="1" style="margin-top: 50px; margin-left: auto; margin-right: auto; border-radius: 20px">
   <tbody>
     <tr>
        <td id="boxc1" colspan="3" style="border:none; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="7" color="red" align="center">Login</td>
@@ -48,7 +48,10 @@
       <td id="boxc2"><input type="password" id="password" name="password"></td>
     </tr>
     <tr>
-      <td id="boxc3" colspan="2"><input type="submit" name="submit" id="submit" value="Login" style="background-color: black; font-size: 20px; width: 100px; color: white"></td>
+      <td colspan="2"><input type="submit" name="submit" id="submit" value="Login" style="background-color: white; font-size: 20px; width: 100px; color: blue"></td>
+    </tr>
+    <tr>
+      <td colspan="2" id="boxc3"><font> Don't have an account? </font><a href="register.php">Sign up</a></td>
     </tr>
   </tbody>
 </table>

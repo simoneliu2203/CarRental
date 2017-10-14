@@ -1,11 +1,12 @@
 <?php
 	include("header.php");
-	include("connection.php"); //Establishing connection with our database
-
+	//include("connection.php"); //Establishing connection with our database
+	include("loginHandler.php");
 ?>
 
 
-<h5>Customer</h5>
+<div style="text-align:right; margin-right:auto"><a href="logout.php" style="color:coral; font-size:18px;margin-right:5px">Logout?</a></div>
+
 
 
 <style>

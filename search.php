@@ -8,8 +8,8 @@
 <style>
 
  #table{
-	 margin-top: 100px; 
-	 margin-left: 60% ;
+	 margin-top: 20px; 
+	 margin-left: 20% ;
 	 border: 4px solid black; 
 	 border-radius: 25px;
 	 border-collapse: separate;
@@ -54,7 +54,7 @@
 </head>
 
 <form method="post" action="carListing.php">
-<table width="400" height="400" border="1" id="table">
+<table width="400" height="300" border="1" id="table">
   <tbody>
     <tr>
       <td id="boxc1" colspan="3" style="font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="8" color="red" align="center">Select date</td>
