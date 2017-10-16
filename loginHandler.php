@@ -1,9 +1,7 @@
 <?php
-	include("connection.php"); //Establishing connection with our database
-
 	session_start();	
 
-	if(isset($_POST["submit"]))
+	if(isset($_POST["login"]))
 	{
 		if(empty($_POST["username"]) || empty($_POST["password"]))
 		{

@@ -1,13 +1,10 @@
 <?php
 	include("header.php");
-	//include("connection.php"); //Establishing connection with our database
 	include("loginHandler.php");
 ?>
 
 
 <div style="text-align:right; margin-right:auto"><a href="logout.php" style="color:coral; font-size:18px;margin-right:5px">Logout?</a></div>
-
-
 
 <style>
  #table{
@@ -68,7 +65,7 @@
 		if(isset($_POST['option']) && ($_POST['option']) == "profile")
 			header("location: customerProfile.php");
 		else if(isset($_POST['option']) && ($_POST['option']) == "rent")
-			header("location: rentCar.php");
+			header("location: customerRent.php");
 		else if(isset($_POST['option']) && ($_POST['option']) == "history")
 			header("location: rentalHistory.php");
 ?>

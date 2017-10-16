@@ -48,7 +48,7 @@
       <td id="boxc2"><input type="password" id="password" name="password"></td>
     </tr>
     <tr>
-      <td colspan="2"><input type="submit" name="submit" id="submit" value="Login" style="background-color: white; font-size: 20px; width: 100px; color: blue"></td>
+      <td colspan="2"><input type="submit" name="login" id="submit" value="Login" style="background-color: white; font-size: 20px; width: 100px; color: blue"></td>
     </tr>
     <tr>
       <td colspan="2" id="boxc3"><font> Don't have an account? </font><a href="register.php">Sign up</a></td>

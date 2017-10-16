@@ -61,11 +61,11 @@
     </tr>
     <tr>
       <td id="boxc2" colspan="2"><strong>Pick-up: </strong></td>
-      <td id="boxc2"><input style="text-align: center" type="text" name="pickup" placeholder="mm/dd/yyyy" id="Datepicker1"></td>
+      <td id="boxc2"><input style="text-align: center" type="text" name="pickup" placeholder="mm/dd/yyyy" id="Datepicker1" required="required"></td>
     </tr>
     <tr>
       <td id="boxc2" colspan="2"><strong> Drop-off:</strong></td>
-      <td id="boxc2"><input style="text-align: center" type="text" name="dropoff" placeholder="mm/dd/yyyy" id="Datepicker2"></td>
+      <td id="boxc2"><input style="text-align: center" type="text" name="dropoff" placeholder="mm/dd/yyyy" id="Datepicker2" required="required"></td>
     </tr>
     <tr>
       <td id="boxc3" colspan="3"><button style="background-color: black; color:white; border-color: white; width: 100px; font-size: 20px" type="submit" id="submit" name="search">Search</button></td>
@@ -73,7 +73,6 @@
   </tbody>
 </table>
 </form>
-    
 
 
     
