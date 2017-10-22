@@ -1,5 +1,13 @@
-<?php include("header.php"); ?>
-
+<?php 
+	session_start();
+	if (isset($_SESSION['username'])) {
+		$username = $_SESSION['username'];
+		include('headerLogin.php');
+	}
+	else {
+		include('header.php');
+	}
+?>
 
 <iframe 
 style="margin-top: 10px;" 

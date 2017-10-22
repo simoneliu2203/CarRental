@@ -1,10 +1,14 @@
 <?php
-	include("header.php");
+	include("headerLogin.php");
 	include("loginHandler.php");
+	if (isset($_SESSION['username'])) {
+		$username = $_SESSION['username'];
+	}
+	else{		
+	}
 ?>
 
-
-<div style="text-align:right; margin-right:auto"><a href="logout.php" style="color:coral; font-size:18px;margin-right:5px">Logout?</a></div>
+<div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
 
 <style>
  #table{
@@ -67,7 +71,7 @@
 		else if(isset($_POST['option']) && ($_POST['option']) == "rent")
 			header("location: customerRent.php");
 		else if(isset($_POST['option']) && ($_POST['option']) == "history")
-			header("location: rentalHistory.php");
+			header("location: customerRentHistory.php");
 ?>
 
 

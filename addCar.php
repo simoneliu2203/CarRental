@@ -1,4 +1,4 @@
-<?php include("header.php");
+<?php include('headerLogin.php');
 $username = "";
 $email    = "";
 $errors = array(); 

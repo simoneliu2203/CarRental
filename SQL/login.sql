@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2017 at 09:12 PM
+-- Generation Time: Oct 22, 2017 at 04:48 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -45,8 +45,7 @@ INSERT INTO `bankaccount` (`c_username`, `creditcard`, `cvv`, `exp_date`, `type`
 ('anna', '4929-4900-1540-8084', 390, '2017-10-31', 'Visa', 'Anna Kit'),
 ('diana', '4024-0071-7760-6406', 195, '2020-10-31', 'Visa', 'Diana Le'),
 ('jenna', '4556-1468-3203-6025', 388, '2021-10-01', 'Visa', 'Jenna Jones'),
-('john', NULL, NULL, NULL, NULL, NULL),
-('kylie', NULL, NULL, NULL, NULL, NULL),
+('justin', NULL, NULL, NULL, NULL, NULL),
 ('leo', '5546-8914-9578-3278', 584, '2020-01-01', 'Master', 'Leo Gokce'),
 ('noah', '4532-2704-1592-9569', 603, '2020-10-31', 'Visa', 'Noah Chandler'),
 ('sammy', '4646-2695-7176-3146', 221, '2025-10-31', 'Visa', 'Sammy Lee');
@@ -71,8 +70,9 @@ CREATE TABLE `booking` (
 
 INSERT INTO `booking` (`booking_id`, `c_username`, `vin`, `pickup`, `dropoff`) VALUES
 (1, 'anna', '1FABP29U3GG189742', '2017-10-30', '2017-10-31'),
-(16, 'anna', '1GBFG25F3Y1155229', '2017-10-01', '2017-10-07'),
-(17, 'anna', 'JHMBA7441GC175568', '2017-10-01', '2017-10-05');
+(18, 'leo', '2T1FG28P51C450172', '2017-12-31', '2018-01-03'),
+(20, 'jenna', '1GBFG25F3Y1155229', '2017-09-01', '2017-09-06'),
+(23, 'anna', '1FMCU0GX4EUC24517', '2016-01-01', '2016-01-10');
 
 -- --------------------------------------------------------
 
@@ -135,8 +135,7 @@ INSERT INTO `customers` (`c_username`, `first`, `last`, `address`, `phone`, `lic
 ('diana', 'Diana', 'Le', '100 Holomoana St Honolulu, HI 96815', '808-123-321', '575597858 ', 'HI'),
 ('jacob', 'Jacob', 'Pifer', '6835 Conservation Way Wilmington , NC 28405', '910-256-012', '462791979', 'SC'),
 ('jenna', 'Jenna', 'Jones', '8311 Six Forks Rd, Raleigh, NC 27615', '202-555-0161', 'F4942582', 'CA'),
-('john', NULL, NULL, NULL, NULL, NULL, NULL),
-('kylie', NULL, NULL, NULL, NULL, NULL, NULL),
+('justin', NULL, NULL, NULL, NULL, NULL, NULL),
 ('leo', 'Leo', 'Gokce               ', '349 Campus Cove, Wilmington, NC 28403', '910-245-014', '317380036134', 'NC'),
 ('noah', 'Noah', 'Chandler', '123 6th St.  Melbourne, FL 32904', '202-555-0182', '3354981 ', 'AL'),
 ('sammy', 'Sammy', 'Lee', '135 Cannon St, Charleston, SC 29403', NULL, '469485600 ', 'SC');
@@ -185,6 +184,23 @@ INSERT INTO `employees` (`e_username`, `first`, `last`, `address`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `get_quote`
+-- (See below for the actual view)
+--
+CREATE TABLE `get_quote` (
+`c_username` varchar(20)
+,`vin` varchar(20)
+,`pickup` date
+,`dropoff` date
+,`days` int(7)
+,`rate` int(11)
+,`base_price` bigint(17)
+,`total` decimal(20,2)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -204,8 +220,7 @@ INSERT INTO `users` (`username`, `email`, `password`, `acc_type`) VALUES
 ('diana', 'diana@gmail.com', '123', 'customer'),
 ('jacob', 'jacob@gmail.com', '123', 'customer'),
 ('jenna', 'jenna@gmail.com', '123', 'customer'),
-('john', 'john@gmail.com', '123', 'customer'),
-('kylie', 'kylie@gmail.com', '123', 'customer'),
+('justin', 'justin@gmail.com', '123', 'customer'),
 ('leo', 'leo@gmail.com', '123', 'customer'),
 ('noah', 'noah@gmail.com', '123', 'customer'),
 ('sammy', 'sammy@gmail.com', '123', 'customer'),
@@ -220,6 +235,15 @@ INSERT INTO `users` (`username`, `email`, `password`, `acc_type`) VALUES
 DROP TABLE IF EXISTS `cus_info`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cus_info`  AS  select `users`.`username` AS `username`,`users`.`email` AS `email`,`users`.`password` AS `password`,`users`.`acc_type` AS `acc_type`,`customers`.`c_username` AS `c_username`,`customers`.`first` AS `first`,`customers`.`last` AS `last`,`customers`.`address` AS `address`,`customers`.`phone` AS `phone`,`customers`.`license` AS `license`,`customers`.`state` AS `state` from (`users` join `customers`) where (`users`.`username` = `customers`.`c_username`) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `get_quote`
+--
+DROP TABLE IF EXISTS `get_quote`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `get_quote`  AS  select `booking`.`c_username` AS `c_username`,`booking`.`vin` AS `vin`,`booking`.`pickup` AS `pickup`,`booking`.`dropoff` AS `dropoff`,(to_days(`booking`.`dropoff`) - to_days(`booking`.`pickup`)) AS `days`,`cars`.`rate` AS `rate`,((to_days(`booking`.`dropoff`) - to_days(`booking`.`pickup`)) * `cars`.`rate`) AS `base_price`,round((((to_days(`booking`.`dropoff`) - to_days(`booking`.`pickup`)) * `cars`.`rate`) + (((to_days(`booking`.`dropoff`) - to_days(`booking`.`pickup`)) * `cars`.`rate`) * 0.07)),2) AS `total` from (`booking` join `cars` on((`booking`.`vin` = `cars`.`vin`))) ;
 
 --
 -- Indexes for dumped tables
@@ -278,7 +302,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `booking_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `booking_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables

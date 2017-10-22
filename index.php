@@ -1,4 +1,13 @@
-<?php include("header.php"); ?>
+<?php 
+	session_start();
+	if (isset($_SESSION['username'])) {
+		$username = $_SESSION['username'];
+		include('headerLogin.php');
+	}
+	else {
+		include('header.php');
+	}
+?>
 
 <table bordercolor="white" width="100%" border="1">
   <tbody>

@@ -1,6 +1,15 @@
-
-<?php include("header.php") ?>
-<style>
+<?php 
+	session_start();
+	if (isset($_SESSION['username'])) {
+		$username = $_SESSION['username'];
+		include('headerLogin.php');
+	}
+	else {
+		include('header.php');
+	}
+?>
+ 
+ <style>
 * {
     box-sizing: border-box;
 }

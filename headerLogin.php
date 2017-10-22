@@ -1,5 +1,5 @@
 <?php
-	include("connection.php");
+	include("connection.php")
 ?>
 
 <!DOCTYPE html>
@@ -59,18 +59,17 @@ body {margin:0;}
 <div class="row" style="background-color:white;padding:1px hspace=20">
   <div class="col-lg-3"><img src="Images/logo.png" width="350" height="80" align="left"></div>
   <div class="col-lg-5"><i><font size="5" align="center"><br/></br/></div>
-  <div class="col-lg-4"><i><font size="3" align="center">Contact: (000)123-4567<br/>Location: Somewhere in Wilmington</br/>  </div>
+  <div class="col-lg-4"><i><font size="3" align="center">Contact: (000)123-4567<br/>Location: Somewhere in Wilmington</br/></div>
 </div>
 
- 
+
 <div class="topnav">
+  <a href="logout.php" class="titleButton" style="color: greenyellow">Logout?</a>
   <a href="aboutus.php" class="titleButton">About us</a>
   <a href="map.php" class="titleButton">Map</a>
-  <a href="register.php" class="titleButton">Login/Register</a>
+  <a href="customerMenu.php" class="titleButton">Menu</a>
   <a href="index.php" class="titleButton">Home</a>
-</div> 	  
-
-
+</div> 
     
     
 </body>

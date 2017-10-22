@@ -1,8 +1,11 @@
 <?php
-	include("header.php");
+	include("headerLogin.php");
 	include("loginHandler.php");
-	$username=$_SESSION['username'];
-	
+	if (isset($_SESSION['username'])) {
+		$username = $_SESSION['username'];
+	}
+	else{		
+	}
 ?><head>
 	<link rel="stylesheet" type="text/css" href="css/carlisting.css">
 	<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
@@ -14,14 +17,18 @@
 
 
 
-<div style="text-align:right; margin-right:auto"><a href="logout.php" style="color:coral; font-size:18px;margin-right:5px">Logout?</a></div>
+
+
+
+
+<div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
 <div style="text-align:left; margin-left:10px"><a href="customerMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to Customer Menu</a></div>
 
 <?php	
 	$car_id = $_GET['id'];
 	//echo 	parse_str($_SERVER['QUERY_STRING']);
-	$pickup = $_GET['pickup'];
-	$dropoff = $_GET['dropoff'];
+	$pickup=$_SESSION['pickup'];
+	$dropoff=$_SESSION['dropoff'];
 	$rate = $_GET['rate'];
 	$new_pick = date_create($pickup);
 	$new_drop = date_create($dropoff);	
@@ -68,11 +75,11 @@
 		</tr>
 		<tr>
 		  <td align="left">Tax (7%)</td>
-		  <td align="right"><?php echo "$".$days*$rate*8/100?></td>
+		  <td align="right"><?php echo "$".$days*$rate*0.07?></td>
 		</tr>
 		<tr>
 		  <td align="left">Total</td>
-		  <td align="right"><?php echo "$".($rate*$days+$days*$rate*8/100) ?></td>
+		  <td align="right"><?php echo "$".($rate*$days+$days*$rate*0.07) ?></td>
 		</tr>
 		<tr>
 		  <td colspan="2"><input type="submit" name="confirm" value="Confirm"></td>      
@@ -80,6 +87,8 @@
 	  </tbody>
 	</table>
 </form>
+
+
 
 <?php
 	if(isset($_POST["confirm"])){

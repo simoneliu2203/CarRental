@@ -1,10 +1,14 @@
 <?php
-	include("header.php");
+	include("headerLogin.php");
 	include("loginHandler.php");
-	$username=$_SESSION['username'];
+	if (isset($_SESSION['username'])) {
+		$username = $_SESSION['username'];
+	}
+	else{		
+	}
 ?>
 
-<div style="text-align:right; margin-right:auto"><a href="logout.php" style="color:coral; font-size:18px;margin-right:5px">Logout?</a></div>
+<div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
 <div style="text-align:left; margin-left:10px"><a href="customerMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to Customer Menu</a></div>
 
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
@@ -91,8 +95,8 @@
         
       </tr>
       <tr>
-        <td><input style="text-align: center" type="text" id="Datepicker1" name="pickup" placeholder="mm/dd/yyyy" required="required"></td>
-        <td><input style="text-align: center" type="text" id="Datepicker2" name="dropoff" placeholder="mm/dd/yyyy" required="required"></td>
+        <td><input style="text-align: center" type="text" id="from" name="pickup" placeholder="mm/dd/yyyy" required="required"></td>
+        <td><input style="text-align: center" type="text" id="to" name="dropoff" placeholder="mm/dd/yyyy" required="required"></td>
         <td>
           <select name="sorted">
             <option value="rate">Rate</option>
@@ -110,9 +114,15 @@
 
 <form method="post" action="">
 <?php
+	$password = "<a>p@ssword</a>";
+  	$method = "aes-256-cbc";
 	if(isset($_POST["search"])){
 		$pickup = date('Y-m-d',strtotime($_POST['pickup']));
 		$dropoff = date('Y-m-d',strtotime($_POST['dropoff']));
+		$_SESSION ['pickup']=$pickup;
+		$_SESSION ['dropoff']=$dropoff;
+
+		
 		$sorted = $_POST['sorted'];
 		$search_car = "SELECT * FROM cars WHERE vin NOT IN (SELECT vin FROM  booking WHERE (pickup <= '$pickup' AND dropoff >= '$pickup') OR (pickup < '$dropoff' AND dropoff >= '$dropoff' ) OR ('$pickup' <= pickup AND '$dropoff' >= pickup)) ORDER BY $sorted";	
 		$result=mysqli_query($db, $search_car);
@@ -128,7 +138,7 @@
 					<li><?php echo "Type: ".$row['type'] ?></li>	
 					<li><?php echo "Year: ".$row['year'] ?></li>	
 					<li><?php echo "Capacity: ".$row['capacity'] ?></li>	
-					<li class="grey"><a href="customerPay.php?id=<?php echo $row['vin']?>&pickup=<?php echo $pickup?>&dropoff=<?php echo $dropoff?>&rate=<?php echo $row['rate']?>">Book Now</a>
+					<li class="grey"><a href="customerPay.php?id=<?php echo $row['vin']?>&rate=<?php echo $row['rate']?>">Book Now</a>
 				</ul>
 			</div>
 			
@@ -138,11 +148,23 @@
 ?>
 </form>
 
-<script type="text/javascript">
-$(function() {
-	$( "#Datepicker1" ).datepicker(); 
-});
-$(function() {
-	$( "#Datepicker2" ).datepicker(); 
+<script>
+$(function () {
+    $("#from").datepicker({
+        minDate: 0,
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate() + 1);
+            $("#to").datepicker("option", "minDate", dt);
+        }
+    });
+    $("#to").datepicker({
+       
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate() - 1);
+            $("#txtFrom").datepicker("option", "maxDate", dt);
+        }
+    });
 });
 </script>
