@@ -16,17 +16,11 @@
 </head>
 
 
-
-
-
-
-
 <div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
 <div style="text-align:left; margin-left:10px"><a href="customerMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to Customer Menu</a></div>
 
 <?php	
 	$car_id = $_GET['id'];
-	//echo 	parse_str($_SERVER['QUERY_STRING']);
 	$pickup=$_SESSION['pickup'];
 	$dropoff=$_SESSION['dropoff'];
 	$rate = $_GET['rate'];
@@ -55,39 +49,7 @@
 }
 ?>
 
-<form method="post" action="">
-	<table width="400" height="500" border="1" bordercolor="white" align="center">
-	  <tbody>
-		<tr>
-		  <td colspan="2"><h2>Booking summary</h2></td>
-		</tr>
-		<tr>
-		  <td align="left">Pick-up: <?php echo $pickup?></td>
-		  <td align="right">Drop-off: <?php echo $dropoff?></td>
-		</tr>
-		<tr>
-		  <td align="left">Days:</td>
-		  <td align="right"><?php echo $diff->days;?></td>
-		</tr>
-		<tr>
-		  <td align="left">Base price: </td>
-		  <td align="right"><?php echo "$".$days*$rate?></td>
-		</tr>
-		<tr>
-		  <td align="left">Tax (7%)</td>
-		  <td align="right"><?php echo "$".$days*$rate*0.07?></td>
-		</tr>
-		<tr>
-		  <td align="left">Total</td>
-		  <td align="right"><?php echo "$".($rate*$days+$days*$rate*0.07) ?></td>
-		</tr>
-		<tr>
-		  <td colspan="2"><input type="submit" name="confirm" value="Confirm"></td>      
-		</tr>
-	  </tbody>
-	</table>
-</form>
-
+<?php include('infoConfirm.php') ?>
 
 
 <?php

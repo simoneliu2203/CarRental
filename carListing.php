@@ -87,7 +87,7 @@
 					<li><?php echo "Model: ".$row['model'] ?></li>	
 					<li><?php echo "Type: ".$row['type'] ?></li>	
 					<li><?php echo "Year: ".$row['year'] ?></li>	
-					<li><?php echo "Capacity: ".$row['capacity'] ?></li>	
+					<li><?php echo "Capacity: ".$row['capacity'] ?></li>
 				</ul>
 			</div>
 		<?php

@@ -67,7 +67,7 @@
 
 <?php
 		if(isset($_POST['option']) && ($_POST['option']) == "profile")
-			header("location: customerProfile.php");
+			header("location: customerInfo.php");
 		else if(isset($_POST['option']) && ($_POST['option']) == "rent")
 			header("location: customerRent.php");
 		else if(isset($_POST['option']) && ($_POST['option']) == "history")

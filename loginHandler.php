@@ -11,10 +11,11 @@
 			$_SESSION ['username']=$_POST['username'];
 			$username=$_POST['username'];
 			$password=$_POST['password'];
+			$pass_encrypted = md5($password);
 
 			
 			//Check username and password from database
-			$result=mysqli_query($db,"SELECT username FROM users WHERE username='$username' and password = '$password'");
+			$result=mysqli_query($db,"SELECT username FROM users WHERE username='$username' and password = '$pass_encrypted'");
 			
 			//Get account type 
 			$acc_type=mysqli_query($db, "SELECT acc_type FROM users WHERE username='$username'");

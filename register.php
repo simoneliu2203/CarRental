@@ -96,6 +96,7 @@ if (isset($_POST['submit'])) {
 	$email = mysqli_real_escape_string($db, $_POST['email']);
 	$password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
 	$password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+	$pass_encrypted = md5($password_1);
 
 	// form validation: ensure that the form is correctly filled
 	if(empty($_POST["username"]) || empty($_POST["email"]) || empty($_POST["password_1"]) || empty($_POST["password_2"])) {
@@ -128,7 +129,7 @@ if (isset($_POST['submit'])) {
 		//$password = md5($password_1);//encrypt the password before saving in the database
 		
 		$query = "INSERT INTO users (username, email, password, acc_type) 
-				  VALUES('$username', '$email', '$password_1','customer')";
+				  VALUES('$username', '$email', '$pass_encrypted','customer')";
 		
 		$query2 = "INSERT INTO customers (c_username) VALUES('$username')";
 		$query3 = "INSERT INTO bankaccount (c_username) VALUES('$username')";

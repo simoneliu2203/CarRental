@@ -114,8 +114,6 @@
 
 <form method="post" action="">
 <?php
-	$password = "<a>p@ssword</a>";
-  	$method = "aes-256-cbc";
 	if(isset($_POST["search"])){
 		$pickup = date('Y-m-d',strtotime($_POST['pickup']));
 		$dropoff = date('Y-m-d',strtotime($_POST['dropoff']));
