@@ -5,6 +5,20 @@
 <script src="jQueryAssets/jquery.ui-1.10.4.datepicker.min.js"></script>
 
 
+<script src="jQueryMask/lib/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="jQueryMask/src/jquery.maskedinput.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function() {
+		$("#cvv").mask("999");
+		$("#date").mask("99/99/9999");
+		$("#zipcode").mask("99999");
+        $("#creditcard").mask("9999 9999 9999 9999");
+		$("#phone").mask("(999) 999-9999");
+		
+    });
+	
+</script>
+
 
 
 
@@ -59,7 +73,7 @@
 					</tr>
 					<tr>
 					  <td align="left">Zipcode</td>
-					  <td align="right"><input type="text" name="zipcode" required="required" value="<?php 
+					  <td align="right"><input id="zipcode" type="text" name="zipcode" required="required" value="<?php 
 				  $result=mysqli_query($db, "select zipcode from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['zipcode'];
@@ -67,7 +81,7 @@
 					</tr>
 					<tr>
 					  <td align="left">Phone number</td>
-					  <td align="right"><input type="text" name="phone" required="required" value="<?php 
+					  <td align="right"><input id="phone" type="text" name="phone" required="required" value="<?php 
 				  $result=mysqli_query($db, "select phone from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['phone'];
@@ -116,7 +130,7 @@
 					</tr>
 					<tr>
 					  <td align="left">Credit card number</td>
-					  <td align="right"><input type="text" name="creditcard" required="required" value="<?php 
+					  <td align="right"><input id="creditcard" type="text" name="creditcard" required="required" value="<?php 
 				  $result=mysqli_query($db, "select creditcard from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['creditcard'];
@@ -124,7 +138,7 @@
 					</tr>
 					<tr>
 					  <td align="left">CVV </td>
-					  <td align="right"><input type="number" name="cvv" required="required" value="<?php 
+					  <td align="right"><input id="cvv" type="number" name="cvv" required="required" value="<?php 
 				  $result=mysqli_query($db, "select cvv from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['cvv'];
@@ -132,7 +146,7 @@
 					</tr>
 					<tr>
 					  <td align="left">Expire date</td>
-					  <td align="right"><input type="text" id="Datepicker1" name="exp_date" size="20" required="required" value="<?php 
+					  <td align="right"><input type="text" id="date" name="exp_date" size="20" required="required" value="<?php 
 				  $result=mysqli_query($db, "select date_format(exp_date, '%m/%d/%Y') as fdate from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['fdate'];

@@ -6,14 +6,14 @@
 	}
 	else{		
 	}
-?><head>
-	<link rel="stylesheet" type="text/css" href="css/carlisting.css">
-	<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
-	<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
-	<link href="jQueryAssets/jquery.ui.datepicker.min.css" rel="stylesheet" type="text/css">
+?>
+
+<link rel="stylesheet" type="text/css" href="css/carlisting.css">
+<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.datepicker.min.css" rel="stylesheet" type="text/css">
 <script src="jQueryAssets/jquery-1.11.1.min.js"></script>
 <script src="jQueryAssets/jquery.ui-1.10.4.datepicker.min.js"></script>
-</head>
 
 
 <div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>

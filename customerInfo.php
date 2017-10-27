@@ -77,6 +77,23 @@ body
 <script src="jQueryAssets/jquery-1.11.1.min.js"></script>
 <script src="jQueryAssets/jquery.ui-1.10.4.datepicker.min.js"></script>
 
+
+<script src="jQueryMask/lib/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="jQueryMask/src/jquery.maskedinput.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function() {
+		$("#cvv").mask("999");
+		$("#date").mask("99/99/9999");
+		$("#zipcode").mask("99999");
+        $("#creditcard").mask("9999 9999 9999 9999");
+		$("#phone").mask("(999) 999-9999");
+		
+    });
+	
+</script>
+
+
+
 <form method="post" action="">
   <table style="margin-top: 5px; margin-left: auto ; margin-right: auto; ">
     <tr>
@@ -135,7 +152,7 @@ body
               
              <tr>
               <td id="boxc2" align="right"><strong>Zipcode</strong></td>
-              <td id="boxc2"><input size="45" type="text" rows="2" name="zipcode" value="<?php 
+              <td id="boxc2"><input size="45" id="zipcode" type="text" rows="2" name="zipcode" value="<?php 
 				  $result=mysqli_query($db, "select zipcode from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['zipcode'];
@@ -144,7 +161,7 @@ body
               
  			<tr>
               <td id="boxc2" align="right"><strong>Phone number</strong></td>
-              <td id="boxc2"><input size="45" type="text" rows="2" name="phone" value="<?php 
+              <td id="boxc2"><input size="45" id="phone" type="text" rows="2" name="phone" value="<?php 
 				  $result=mysqli_query($db, "select phone from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['phone'];
@@ -192,7 +209,7 @@ body
             </tr>
             <tr>
               <td id="boxc2" align="right"><strong>Credit card number</strong></td>
-              <td id="boxc2"><input size="30" type="text" name="creditcard" placeholder="xxxx-xxxx-xxxx-xxxx" value="<?php 
+              <td id="boxc2"><input size="30" type="text" id="creditcard" name="creditcard" placeholder="xxxx xxxx xxxx xxxx" value="<?php 
 				  $result=mysqli_query($db, "select creditcard from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['creditcard'];
@@ -200,7 +217,7 @@ body
             </tr>
             <tr>
               <td id="boxc2" align="right"><strong>CVV (3 digits)</strong></td>
-              <td id="boxc2"><input size="30" type="text" name="cvv" value="<?php 
+              <td id="boxc2"><input size="30" id="cvv" type="text" name="cvv" value="<?php 
 				  $result=mysqli_query($db, "select cvv from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['cvv'];
@@ -208,7 +225,7 @@ body
             </tr>
             <tr>
               <td id="boxc2" align="right"><strong>Expire Date (mm/dd/yyyy)</strong></td>              
-              <td id="boxc2"><input type="text" id="Datepicker1" name="exp_date" size="30" value="<?php 
+              <td id="boxc2"><input type="text" id="date" name="exp_date" size="30" value="<?php 
 				  $result=mysqli_query($db, "select date_format(exp_date, '%m/%d/%Y') as fdate from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['fdate'];

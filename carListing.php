@@ -74,7 +74,7 @@
 	if(isset($_POST["search"])){
 		$pickup = date('Y-m-d',strtotime($_POST['pickup']));
 		$dropoff = date('Y-m-d',strtotime($_POST['dropoff']));
-		$search_car = "SELECT * FROM cars WHERE vin NOT IN (SELECT vin FROM  booking WHERE (pickup <= '$pickup' AND dropoff >= '$pickup') OR (pickup < '$dropoff' AND dropoff >= '$dropoff' ) OR ('$pickup' <= pickup AND '$dropoff' >= pickup)) ORDER BY brand";	
+		$search_car = "SELECT * FROM cars WHERE vin NOT IN (SELECT vin FROM  booking WHERE (pickup <= '$pickup' AND dropoff >= '$pickup') OR (pickup < '$dropoff' AND dropoff >= '$dropoff' ) OR ('$pickup' <= pickup AND '$dropoff' >= pickup)) ORDER BY rate";	
 		$result=mysqli_query($db, $search_car);
 
 		while($row = mysqli_fetch_assoc($result)){

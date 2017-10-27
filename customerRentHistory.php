@@ -20,15 +20,17 @@
 			<th width='10%' bgcolor=black style='color:white; padding:15px'>Model</th>
 			<th width='10%' bgcolor=black style='color:white; padding:15px'>Type</th>
 			<th width='10%' bgcolor=black style='color:white; padding:15px'>Year</th>
-		    <th width='10%' bgcolor=black style='color:white; padding:15px'>Color</th>
 		    <th width='10%' bgcolor=black style='color:white; padding:15px'>Rate</th>
 			<th width='10%' bgcolor=black style='color:white; padding:15px'>Pick-up</th>
 			<th width='10%' bgcolor=black style='color:white; padding:15px'>Drop-off</th>
 			<th width='10%' bgcolor=black style='color:white; padding:15px'>Total</th>
+			<th width='10%' bgcolor=black style='color:white; padding:15px'>Status</th>
+
 			</tr>";
 		
 			$rented_car = mysqli_query($db,"SELECT * FROM get_quote natural join cars WHERE c_username = '$username'");
-
+			
+			$today =  date_create();
 			if (mysqli_num_rows($rented_car) != 0){
 				while($row = mysqli_fetch_assoc($rented_car)){
 					echo "<tr>" . "<td>" . '<img src="data:image/jpeg;base64,'.base64_encode( $row['img'] ).'" heigh="100" width="100"/>'. "</td>";
@@ -36,11 +38,22 @@
 					echo  "<td>" . $row['model'] . "</td>"; 
 					echo  "<td>" . $row['type'] . "</td>"; 
 					echo  "<td>" . $row['year'] . "</td>"; 
-					echo  "<td>" . $row['color'] . "</td>"; 
 					echo  "<td>" . "$".$row['rate']."/day" . "</td>";
 					echo  "<td>" . $row['pickup'] . "</td>";
 					echo  "<td>" . $row['dropoff'] . "</td>";
-					echo  "<td>" . "$". $row['total'] . "</td>";					
+					echo  "<td>" . "$". $row['total'] . "</td>";
+					echo  "<td>" . $row['status'] . "</td>"; 
+					$pick = date('Y-m-d',strtotime($row['pickup']));
+					$new_pick = date_create($pick);
+										
+					$diff = date_diff($today,$new_pick) ->format("%R%a days");;
+					//echo $diff;
+					//echo "<br>";
+					if ($diff>1){
+						//echo "Cancel";
+					}
+
+
 				}
 			}
 			else {
