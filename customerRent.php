@@ -1,11 +1,15 @@
-<?php
-	include("headerLogin.php");
-	include("loginHandler.php");
+<?php 
+	session_start();
 	if (isset($_SESSION['username'])) {
 		$username = $_SESSION['username'];
+		include('headerLogin.php');
 	}
-	else{		
+	else {
+		header("Location: index.php");
+		die();
 	}
+	date_default_timezone_set('America/New_York');
+
 ?>
 
 <div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
@@ -101,8 +105,7 @@
           <select name="sorted">
             <option value="rate">Rate</option>
             <option value="brand">Brand</option>
-            <option value="year">Year</option>
-            <option value="color">Color</option>
+            <option value="type">Type</option>
           </select>
         </td>
         <td rowspan="2"><input type="submit" name="search" value="Search"></td>

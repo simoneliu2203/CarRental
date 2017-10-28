@@ -67,7 +67,24 @@ body {margin:0;}
   <a href="logout.php" class="titleButton" style="color: greenyellow">Logout?</a>
   <a href="aboutus.php" class="titleButton">About us</a>
   <a href="map.php" class="titleButton">Map</a>
-  <a href="customerMenu.php" class="titleButton">Menu</a>
+	<?php 
+	if (isset($_SESSION['username'])) { 
+		$result=mysqli_query($db,"SELECT username FROM users WHERE username='$username'");
+
+		$user_type=mysqli_query($db, "SELECT acc_type FROM users WHERE username='$username'");			
+		$row = mysqli_fetch_assoc($user_type);
+		if(mysqli_num_rows($result) == 1)
+			{	?>
+				<?php if($row['acc_type']=="customer") { ?>
+						<a href="customerMenu.php" class="titleButton">Menu</a>
+				<?php } else { ?>
+						<a href="employeeMenu.php" class="titleButton">Menu</a>
+				<?php } ?> <?php
+			}
+	
+	}
+	?>
+	
   <a href="index.php" class="titleButton">Home</a>
 </div> 
     

@@ -1,11 +1,15 @@
-<?php
-	include("headerLogin.php");
-	include("loginHandler.php");
+<?php 
+	session_start();
 	if (isset($_SESSION['username'])) {
 		$username = $_SESSION['username'];
+		include('headerLogin.php');
 	}
-	else{		
+	else {
+		header("Location: index.php");
+		die();
 	}
+	date_default_timezone_set('America/New_York');
+
 ?>
 
 <link rel="stylesheet" type="text/css" href="css/carlisting.css">
@@ -54,8 +58,8 @@
 
 <?php
 	if(isset($_POST["confirm"])){
-		$query = "INSERT INTO booking (c_username, vin, pickup, dropoff) 
-				  VALUES('$username', '$car_id', '$pickup','$dropoff')";
+		$query = "INSERT INTO booking (c_username, vin, pickup, dropoff, status) 
+				  VALUES('$username', '$car_id', '$pickup','$dropoff', 'pending')";
 		
 		mysqli_query($db, $query);
 		//echo "Your booking is done";

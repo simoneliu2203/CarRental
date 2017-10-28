@@ -1,11 +1,14 @@
-<?php
-	include("headerLogin.php");
-	include("loginHandler.php");
+<?php 
+	session_start();
 	if (isset($_SESSION['username'])) {
 		$username = $_SESSION['username'];
+		include('headerLogin.php');
 	}
-	else{		
+	else {
+		header("Location: index.php");
+		die();
 	}
+	date_default_timezone_set('America/New_York');
 ?>
 
 <div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
@@ -45,10 +48,11 @@
 					echo  "<td>" . $row['status'] . "</td>"; 
 					$pick = date('Y-m-d',strtotime($row['pickup']));
 					$new_pick = date_create($pick);
-										
-					$diff = date_diff($today,$new_pick) ->format("%R%a days");;
-					//echo $diff;
-					//echo "<br>";
+					
+					echo $pick;
+					$diff = date_diff($today,$new_pick) ->format("%r%a days");;
+					echo $diff;
+					echo "<br>";
 					if ($diff>1){
 						//echo "Cancel";
 					}

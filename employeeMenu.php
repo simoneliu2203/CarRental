@@ -1,5 +1,13 @@
-<?php
-	include("header.php");
+<?php 
+	session_start();
+	if (isset($_SESSION['username'])) {
+		$username = $_SESSION['username'];
+		include('headerLogin.php');
+	}
+	else {
+		header("Location: index.php");
+		die();
+	}
 ?>
 
 

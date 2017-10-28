@@ -67,6 +67,16 @@
       <td id="boxc2" colspan="2"><strong> Drop-off:</strong></td>
       <td id="boxc2"><input style="text-align: center" type="text" name="dropoff" placeholder="mm/dd/yyyy" id="to" required="required"></td>
     </tr>
+	 <tr>
+      <td id="boxc2" colspan="2"><strong>Sorted by:</strong></td>
+      <td id="boxc2">
+          <select name="sorted">
+            <option value="rate">Rate</option>
+            <option value="brand">Brand</option>
+            <option value="type">Type</option>
+          </select>
+        </td>
+    </tr>
     <tr>
       <td id="boxc3" colspan="3"><button style="background-color: black; color:white; border-color: white; width: 100px; font-size: 20px" type="submit" id="submit" name="search">Search</button></td>
     </tr>
