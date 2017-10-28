@@ -138,7 +138,7 @@
 					</tr>
 					<tr>
 					  <td align="left">CVV </td>
-					  <td align="right"><input id="cvv" type="number" name="cvv" required="required" value="<?php 
+					  <td align="right"><input id="cvv" type="text" name="cvv" required="required" value="<?php 
 				  $result=mysqli_query($db, "select cvv from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['cvv'];
