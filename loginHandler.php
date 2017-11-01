@@ -1,5 +1,10 @@
 <?php
-	session_start();	
+
+    if(!isset($_SESSION)) 
+    { 
+		ob_start();
+        session_start(); 
+    } 	
 
 	if(isset($_POST["login"]))
 	{
@@ -24,7 +29,7 @@
 		
 			if(mysqli_num_rows($result) == 1)
 			{	
-				if($row['acc_type']=="customer")
+				if($row['acc_type']=="customer")					
 					header("location: customerMenu.php");
 				else if($row['acc_type']=="employee")
 					header("location: employeeMenu.php");
@@ -38,3 +43,4 @@
 	}
 		
 ?>
+

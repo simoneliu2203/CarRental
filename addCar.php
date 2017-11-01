@@ -1,10 +1,17 @@
-<?php include('headerLogin.php');
-$username = "";
-$email    = "";
-$errors = array(); 
-//$_SESSION['success'] = "";
+<?php 
+	session_start();
+	if (isset($_SESSION['username'])) {
+		$username = $_SESSION['username'];
+		include('headerLogin.php');
+	}
+	else {
+		header("Location: index.php");
+		die();
+	}
 
-session_start();
+
+$errors = array(); 
+
 
 
 
@@ -63,7 +70,7 @@ body
     </tr>
     <tr>
       <td id="boxc2" align="right"><strong>VIN</strong></td>
-      <td id="boxc2"><input type="text" id="username" name="vin" size="25"></td>
+      <td id="boxc2"><input type="text" id="vin" name="vin" size="25"></td>
     </tr>
     <tr>
       <td id="boxc2" align="right"><strong>Brand</strong></td>
@@ -112,5 +119,3 @@ body
   </tbody>
 </table>
 </form>
-
-<?php

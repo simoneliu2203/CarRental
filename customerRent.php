@@ -125,7 +125,8 @@
 
 		
 		$sorted = $_POST['sorted'];
-		$search_car = "SELECT * FROM cars WHERE vin NOT IN (SELECT vin FROM  booking WHERE (pickup <= '$pickup' AND dropoff >= '$pickup') OR (pickup < '$dropoff' AND dropoff >= '$dropoff' ) OR ('$pickup' <= pickup AND '$dropoff' >= pickup)) ORDER BY $sorted";	
+		$search_car = "SELECT * FROM cars WHERE available = 'yes' AND vin NOT IN (SELECT vin FROM  booking WHERE (pickup <= '$pickup' AND dropoff >= '$pickup' AND status <> 'cancelled') OR (pickup < '$dropoff' AND dropoff >= '$dropoff' AND status <> 'cancelled') OR ('$pickup' <= pickup AND '$dropoff' >= pickup AND status <> 'cancelled')) ORDER BY $sorted";	
+		
 		$result=mysqli_query($db, $search_car);
 
 		while($row = mysqli_fetch_assoc($result)){

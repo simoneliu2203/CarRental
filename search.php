@@ -53,7 +53,7 @@
 <script src="jQueryAssets/jquery.ui-1.10.4.slider.min.js"></script>
 </head>
 
-<form method="post" action="carListing.php">
+<form method="post" action="searchHandler.php">
 <table width="400" height="300" border="1" id="table">
   <tbody>
     <tr>

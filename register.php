@@ -4,6 +4,7 @@ $email    = "";
 $errors = array(); 
 //$_SESSION['success'] = "";
 
+ob_start();
 session_start();
 
 

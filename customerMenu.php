@@ -1,10 +1,13 @@
-<?php
-	include("headerLogin.php");
-	include("loginHandler.php");
+<?php 
+	ob_start();
+	session_start();
 	if (isset($_SESSION['username'])) {
 		$username = $_SESSION['username'];
+		include('headerLogin.php');
 	}
-	else{		
+	else {
+		header("Location: index.php");
+		die();
 	}
 ?>
 
