@@ -1,4 +1,5 @@
 <?php	
+	//Getting all the car's info that the customer chose to book
 	$car_id = $_GET['id'];
 	$pickup=$_SESSION['pickup'];
 	$dropoff=$_SESSION['dropoff'];
@@ -8,7 +9,7 @@
 	$diff = date_diff($new_drop,$new_pick);
 	$days = $diff->days;	
 
-
+	//Using query to get the car's info from database and print it out to the screen
 	$search_car = "SELECT * FROM cars WHERE vin = '$car_id'";	
 	$result=mysqli_query($db, $search_car);
 	while($row = mysqli_fetch_assoc($result)){
@@ -29,15 +30,16 @@
 ?>
 
 
-
-
 <?php
+	//After customer confirmed their booking, insert to the database the booking info includes 
+	//customer username, vin number, dates, and status (status by defaul always start with pending) 
 	if(isset($_POST["confirm"])){
 		$query = "INSERT INTO booking (c_username, vin, pickup, dropoff, status) 
 				  VALUES('$username', '$car_id', '$pickup','$dropoff', 'pending')";
 		
 		mysqli_query($db, $query);
-		//echo "Your booking is done";
+		
+		//Have the pop up notification to let the customer know their booking has been submitted
 		if (TRUE) {
 			echo "<script type = \"text/javascript\">
 			alert(\"Thank you for booking. Your payment is Being Verified. Once it is processed, we'll email additional details!\");

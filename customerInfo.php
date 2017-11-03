@@ -8,6 +8,8 @@
 		header("Location: index.php");
 		die();
 	}
+
+	date_default_timezone_set('America/New_York');
 ?>
 
 <div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
@@ -249,16 +251,3 @@ body
     </tr>
   </table>
 </form>
-
-
-
-
-<script type="text/javascript">
-$(function() {
-	$( "#Datepicker1" ).datepicker(); 
-});
-</script>
-
-
-
-

@@ -29,10 +29,19 @@
 		
 			if(mysqli_num_rows($result) == 1)
 			{	
-				if($row['acc_type']=="customer")					
-					header("location: customerMenu.php");
-				else if($row['acc_type']=="employee")
+				if($row['acc_type']=="customer"){
+					if (isset($_SESSION['car_id'])) {
+						$car_id = $_SESSION['car_id'];
+						$rate = $_SESSION['rate'];
+						header("location: customerPay.php?id=$car_id&rate=$rate");
+					}
+					else{
+						header("location: customerMenu.php");
+					}					
+				}
+				else if($row['acc_type']=="employee"){
 					header("location: employeeMenu.php");
+				}					
 			}
 			else
 			{

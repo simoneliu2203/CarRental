@@ -1,14 +1,15 @@
+<!-- Import libraries, using jQuery library --> 
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.datepicker.min.css" rel="stylesheet" type="text/css">
 <script src="jQueryAssets/jquery-1.11.1.min.js"></script>
 <script src="jQueryAssets/jquery.ui-1.10.4.datepicker.min.js"></script>
-
-
 <script src="jQueryMask/lib/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="jQueryMask/src/jquery.maskedinput.js" type="text/javascript"></script>
+
 <script type="text/javascript">
-    $(function() {
+   	// Format the input from user
+	$(function() {
 		$("#cvv").mask("999");
 		$("#date").mask("99/99/9999");
 		$("#zipcode").mask("99999");
@@ -19,12 +20,18 @@
 	
 </script>
 
-
-
-
+<!-- Create table for customer profile and credit card info --> 
+<!-- Print out customers' information and credit card info from database --> 
+<!-- Using query to look for the customer in SQL --> 
+<!-- User cannot go to the next step if inputs are empty --> 
+<!-- 1st step: Customers info --> 
+<!-- 2nd step: Customers billing info --> 
+<!-- 3rd step: Confirm booking info --> 
 <div>
 	<?php if (empty($_POST) || $_POST['update']==='Previous'){ ?>
 	<!-- First Step -->
+	<!-- Profile table -->
+	
 			<form action="" method="post">
 			<table width="400" height="600" border="1" bordercolor="white" align="center">
 				  <tbody>
@@ -113,6 +120,7 @@
 	
 
 	<!-- Second Step -->
+	<!-- Billing info table-->
 	<?php }elseif ($_POST['update']==='Next'){ ?>
 			<form action="" method="post">
 			<table width="400" height="500" border="1" bordercolor="white" align="center">
@@ -169,6 +177,7 @@
   			</form>
  
 	<!-- Third Step --> 
+	<!-- After all the information has filled in or updated, take the user to the confirm  -->
 	<?php }elseif ($_POST['update']==='Complete'){ ?>
 			<form action="" method="post">
 			<table width="400" height="500" border="1" bordercolor="white" align="center">
@@ -210,6 +219,9 @@
 
 
 <?php
+//Nested if statements
+//If user click next, call page profile.php or creditCard.php 
+//which handle updating the profile and credit card info back to the database
 
 if(isset($_POST['update'])){
     if($_POST['update'] == "Next"){
@@ -224,9 +236,3 @@ if(isset($_POST['update'])){
 }
 		
 ?>
-
-<script type="text/javascript">
-$(function() {
-	$( "#Datepicker1" ).datepicker(); 
-});
-</script>

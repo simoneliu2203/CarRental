@@ -19,6 +19,12 @@
 		include('confirmInfo.php'); 
 	}
 	else {
+		$_SESSION ['car_id']=$_GET['id'];
+		$_SESSION ['rate']=$_GET['rate'];
+		$car_id = $_SESSION['car_id'];
+		$rate = $_SESSION['rate'];
+		$pickup=$_SESSION['pickup'];
+		$dropoff=$_SESSION['dropoff'];
 		header('location: login.php');
 	}
 	
