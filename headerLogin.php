@@ -1,5 +1,5 @@
 <?php
-	include("connection.php")
+	include("/home/yml4331/connection.php")
 ?>
 
 <!DOCTYPE html>

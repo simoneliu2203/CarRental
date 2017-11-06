@@ -1,5 +1,5 @@
 <?php 
-	ob_start();
+ob_start();
 	session_start();
 	if (isset($_SESSION['username'])) {
 		$username = $_SESSION['username'];
