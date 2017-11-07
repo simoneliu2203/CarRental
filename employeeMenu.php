@@ -1,4 +1,5 @@
 <?php 
+	ob_start();
 	session_start();
 	if (isset($_SESSION['username'])) {
 		$username = $_SESSION['username'];
@@ -58,7 +59,7 @@
 		<td id="boxc2" colspan="2" align="left"><input type="radio" name="option" value="customer"><label >View/Update Customers</label></input><br><br>
     </tr>
     <tr>
-    	<td id="boxc2" colspan="2" align="left"><input type="radio" name="option" value="bla"><label >Bla bla</label></input><br><br>
+    	<td id="boxc2" colspan="2" align="left"><input type="radio" name="option" value="booking"><label >Manage Bookings</label></input><br><br>
     </tr>
     <tr>
       <td id="boxc3" colspan="2"><input type="submit" name="submit" value="Submit" style="background-color: black; font-size: 20px; width: 100px; color: white"></td>
@@ -73,9 +74,9 @@
 		if(isset($_POST['option']) && ($_POST['option']) == "vehicle")
 			header("location: addCar.php");
 		else if(isset($_POST['option']) && ($_POST['option']) == "customer")
-			header("location: rentCar.php");
-		else if(isset($_POST['option']) && ($_POST['option']) == "history")
-			header("location: rentalHistory.php");
+			header("location: #");
+		else if(isset($_POST['option']) && ($_POST['option']) == "booking")
+			header("location: manageBooking.php");
 ?>
 
 
