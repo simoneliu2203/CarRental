@@ -1,14 +1,6 @@
 <?php 
 	ob_start();
-	session_start();
-	if (isset($_SESSION['username'])) {
-		$username = $_SESSION['username'];
-		include('headerLogin.php');
-	}
-	else {
-		header("Location: index.php");
-		die();
-	}
+	include('customerAccessControl.php');
 ?>
 
 <div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>

@@ -33,13 +33,16 @@
 					if (isset($_SESSION['car_id'])) {
 						$car_id = $_SESSION['car_id'];
 						$rate = $_SESSION['rate'];
+						$_SESSION['customer']=true;
 						header("location: customerPay.php?id=$car_id&rate=$rate");
 					}
 					else{
+						$_SESSION['customer']=true;
 						header("location: customerMenu.php");
 					}					
 				}
 				else if($row['acc_type']=="employee"){
+					$_SESSION['employee']=true;
 					header("location: employeeMenu.php");
 				}					
 			}

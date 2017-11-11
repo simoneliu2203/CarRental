@@ -1,18 +1,9 @@
 <?php 
-	session_start();
-	if (isset($_SESSION['username'])) {
-		$username = $_SESSION['username'];
-		include('headerLogin.php');
-	}
-	else {
-		header("Location: index.php");
-		die();
-	}
-	date_default_timezone_set('America/New_York');
+	include('employeeAccessControl.php');
 ?>
 
-<div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
-<div style="text-align:left; margin-left:10px"><a href="customerMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to Customer Menu</a></div>
+<div style="text-align:right; margin-right:20px; color: red">Employee: <?php echo $username?></div>
+<div style="text-align:left; margin-left:10px"><a href="employeeMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to the Menu</a></div>
 
 <style>
 .button {
