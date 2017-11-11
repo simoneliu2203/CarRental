@@ -3,6 +3,31 @@
 ?>
 
 <style>
+.button {
+    border: none;
+	border-radius: 12px;
+    color: white;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white; 
+    color: darkblue; 
+    border: 2px solid lightgray;
+}
+
+.button1:hover {
+    background-color: white;
+    color: blue;
+	border: 2px solid black;
+}
  #table{
 	 margin-top: 50px; 
 	 margin-left: 5% ;
@@ -48,7 +73,7 @@
       <td id="boxc2"><input type="password" id="password" name="password"></td>
     </tr>
     <tr>
-      <td colspan="2"><input type="submit" name="login" id="submit" value="Login" style="background-color: white; font-size: 20px; width: 100px; color: blue"></td>
+      <td colspan="2"><input type="submit" name="login" id="submit" value="Login" class="button button1"></td>
     </tr>
     <tr>
       <td colspan="2" id="boxc3"><font> Don't have an account? </font><a href="register.php">Sign up</a></td>

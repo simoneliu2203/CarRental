@@ -6,7 +6,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+.button {
+    border: none;
+	border-radius: 12px;
+    color: white;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
 
+.button1 {
+    background-color: black; 
+    color: white; 
+    border: 2px solid black;
+}
+
+.button1:hover {
+    background-color: black;
+    color: antiquewhite;
+	border: 2px solid white;
+}
  #table{
 	 margin-top: 20px; 
 	 margin-left: 20% ;
@@ -78,7 +102,7 @@
         </td>
     </tr>
     <tr>
-      <td id="boxc3" colspan="3"><button style="background-color: black; color:white; border-color: white; width: 100px; font-size: 20px" type="submit" id="submit" name="search">Search</button></td>
+      <td id="boxc3" colspan="3"><button class="button button1" type="submit" id="submit" name="search">Search</button></td>
     </tr>
   </tbody>
 </table>

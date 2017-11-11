@@ -16,6 +16,31 @@
 
 
 <style>
+.button {
+    border: none;
+	border-radius: 12px;
+    color: white;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: black; 
+    color: white; 
+    border: 2px solid black;
+}
+
+.button1:hover {
+    background-color: black;
+    color: antiquewhite;
+	border: 2px solid white;
+}
  #table{
 	 margin-top: 50px; 
 	 margin-left: 5% ;
@@ -62,7 +87,7 @@
     	<td id="boxc2" colspan="2" align="left"><input type="radio" name="option" value="booking"><label >Manage Bookings</label></input><br><br>
     </tr>
     <tr>
-      <td id="boxc3" colspan="2"><input type="submit" name="submit" value="Submit" style="background-color: black; font-size: 20px; width: 100px; color: white"></td>
+      <td id="boxc3" colspan="2"><input type="submit" name="submit" class="button button1" value="Submit" ></td>
     </tr>
   </tbody>
 </table>

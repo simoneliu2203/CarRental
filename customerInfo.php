@@ -32,6 +32,31 @@
 ?>
 
 <style>
+.button {
+    border: none;
+	border-radius: 12px;
+    color: white;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: black; 
+    color: white; 
+    border: 2px solid black;
+}
+
+.button1:hover {
+    background-color: black;
+    color: antiquewhite;
+	border: 2px solid white;
+}
 body
 {
 	margin: 0;
@@ -192,7 +217,7 @@ body
              
             
             <tr>
-              <td id="boxc3" colspan="2"><input type="submit" name="update1" value="Update" style="background-color: black; font-size: 20px; width: 100px; color: white"></td>
+              <td id="boxc3" colspan="2"><input type="submit" name="update1" value="Update" class="button button1"></td>
               
             </tbody>
           </table>
@@ -244,7 +269,7 @@ body
 				?>"></td>
             </tr>            
             <tr>
-              <td id="boxc3" colspan="2"><input type="submit" name="update2" value="Update" style="background-color: black; font-size: 20px; width: 100px; color: white"></td>
+              <td id="boxc3" colspan="2"><input type="submit" name="update2" value="Update" class="button button1"></td>
               
           </table>
         </td>

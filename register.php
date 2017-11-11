@@ -2,17 +2,40 @@
 $username = "";
 $email    = "";
 $errors = array(); 
-//$_SESSION['success'] = "";
 
 ob_start();
 session_start();
 
 
 
-
 ?>
 
 <style>
+.button {
+    border: none;
+	border-radius: 12px;
+    color: white;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white; 
+    color: darkblue; 
+    border: 2px solid lightgray;
+}
+
+.button1:hover {
+    background-color: white;
+    color: blue;
+	border: 2px solid black;
+}
 body
 {
 	margin: 0;
@@ -81,7 +104,7 @@ body
       <td id="boxc2"><input type="password" id="password_2" name="password_2"></td>
     </tr>
     <tr>
-      <td colspan="2"><input type="submit" name="submit" id="submit" value="Sign up" style="background-color: white; font-size: 20px; width: 100px; color: blue"></td>
+      <td colspan="2"><input type="submit" name="submit" id="submit" value="Sign up" class="button button1"></td>
     </tr>
     <tr>
       <td colspan="2" id="boxc3"><font> Already a member? </font><a href="login.php">Sign in</a></td>
@@ -132,14 +155,8 @@ if (isset($_POST['submit'])) {
 		
 		$query = "INSERT INTO users (username, email, password, acc_type) 
 				  VALUES('$username', '$email', '$pass_encrypted','customer')";
-		
-		$query2 = "INSERT INTO customers (c_username) VALUES('$username')";
-		$query3 = "INSERT INTO bankaccount (c_username) VALUES('$username')";
-
-		
+				
 		mysqli_query($db, $query);
-		mysqli_query($db, $query2);
-		mysqli_query($db, $query3);
 		
 		$_SESSION['username'] = $username;
 		//$_SESSION['success'] = "You are now logged in";
