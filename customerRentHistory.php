@@ -61,7 +61,7 @@ function confirmCancel()
 					$new_pick = date_create($pick);
 					
 					$diff = date_diff($today,$new_pick) ->format("%r%a days");;
-					if ($diff>=0 && $row['status']!='cancelled'){
+					if ($diff>=0 && $row['status']!='cancelled' && $row['status']!='declined'){
 						?> 
 							<td>
 								<button type="submit" name="cancel" value="<?php echo $row['booking_id']?>" onclick='return confirmCancel()'>Cancel</button>
