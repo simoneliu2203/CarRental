@@ -1,4 +1,5 @@
 <?php 
+	ob_start();
 	include('employeeAccessControl.php');
 ?>
 
@@ -42,16 +43,6 @@
     color: white;
 }
 
-.button3 {
-    background-color: white; 
-    color: black; 
-    border: 2px solid darkred;
-}
-
-.button3:hover {
-    background-color: red;
-    color: white;
-}
 </style>
 
 <h2 align="center">Bookings</h2>
@@ -69,13 +60,23 @@
 		$query = "update booking set status = 'declined' where booking_id = '$id'";
 		mysqli_query($db, $query);
 	}
-	
-	if(isset($_POST["cancelled"])){
-		$id = $_POST['cancelled'];
-		$query = "update booking set status = 'cancelled' where booking_id = '$id'";
-		mysqli_query($db, $query);
-	}
 ?>
+
+<script type='text/javascript'>
+function approveConfirm()
+{
+	return confirm("Are you sure you want to APPROVE this booking?");
+	window.opener.location.reload(true);
+	window.close();
+};
+	
+function declineConfirm()
+{
+	return confirm("Are you sure you want to DECLINE this booking?");
+	window.opener.location.reload(true);
+	window.close();
+}
+</script>
 
 <form method="post" action="">
 <?php echo "<table border=2 align=center width='90%'>
@@ -113,9 +114,8 @@
 	?>	
 
 					<td>
-						<button class="button button1" type="submit" name="approved" value="<?php echo $row['booking_id']?>">Approved</button>
-						<button class="button button2" type="submit" name="declined" value="<?php echo $row['booking_id']?>">Declined</button>
-						<button class="button button3" type="submit" name="cancelled" value="<?php echo $row['booking_id']?>">Cancelled</button>
+						<button class="button button1" type="submit" name="approved" onclick='return approveConfirm()' value="<?php echo $row['booking_id']?>">Approved</button>
+						<button class="button button2" type="submit" name="declined" onclick='return declineConfirm()' value="<?php echo $row['booking_id']?>">Declined</button>
 				   </td> 	
 				<?php						
 				}			
