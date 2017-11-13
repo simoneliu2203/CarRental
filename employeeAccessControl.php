@@ -2,7 +2,7 @@
 	session_start(); 
 	if (!isset($_SESSION['employee']))
 	{
-		exit('NICE TRY!');
+		header ('location: index.php');
 	}
 	if (isset($_SESSION['username'])) {
 		$username = $_SESSION['username'];

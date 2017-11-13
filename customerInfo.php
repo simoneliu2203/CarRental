@@ -9,8 +9,7 @@
 		$errors = array();
 	    if(isset($_REQUEST['update1'])){
 			include('profile.php');
-		}
-		
+		}	
 ?>
 
 <?php
@@ -18,7 +17,6 @@
 	    if(isset($_REQUEST['update2'])){
 			include('creditCard.php');
 		}
-		
 ?>
 
 <style>

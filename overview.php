@@ -10,6 +10,9 @@
 	 if(isset($_REQUEST['booking_detail'])){
 		 header('location: manageBooking.php');
 	 }
+	 if(isset($_REQUEST['vihcle_detail'])){
+		 header('location: vehicleListing.php');
+	 }
 ?>
 
 <style>

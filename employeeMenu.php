@@ -69,11 +69,14 @@
     <tr>
        <td id="boxc1" colspan="3" style="border:none; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="7" color="red" align="center">Options</td>
     </tr>
-    <tr>
-    	<td id="boxc2" colspan="2" align="left" ><input type="radio" name="option" value="vehicle"><label >Add Vehicles</label></input><br><br></td>
+	<tr>
+    	<td id="boxc2" colspan="2" align="left" ><input type="radio" name="option" value="overview"><label >Overview</label></input><br><br></td>
     </tr>
     <tr>
-		<td id="boxc2" colspan="2" align="left"><input type="radio" name="option" value="customer"><label >View/Update Customers</label></input><br><br>
+    	<td id="boxc2" colspan="2" align="left" ><input type="radio" name="option" value="add"><label >Add Vehicles</label></input><br><br></td>
+    </tr>
+    <tr>
+		<td id="boxc2" colspan="2" align="left"><input type="radio" name="option" value="customer"><label >Update Customers</label></input><br><br>
     </tr>
     <tr>
     	<td id="boxc2" colspan="2" align="left"><input type="radio" name="option" value="booking"><label >Manage Bookings</label></input><br><br>
@@ -88,8 +91,10 @@
 
 
 <?php
-		if(isset($_POST['option']) && ($_POST['option']) == "vehicle")
+		if(isset($_POST['option']) && ($_POST['option']) == "add")
 			header("location: addCar.php");
+		else if(isset($_POST['option']) && ($_POST['option']) == "overview")
+			header("location: overview.php");
 		else if(isset($_POST['option']) && ($_POST['option']) == "customer")
 			header("location: #");
 		else if(isset($_POST['option']) && ($_POST['option']) == "booking")

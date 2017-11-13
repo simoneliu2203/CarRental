@@ -90,7 +90,7 @@
 			?>
 			<div class="columns">
 				<ul class="price">
-					<li class="header"> <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['img'] ).'" heigh="200" width="200"/>'?></li>
+					<li class="header"> <?php echo '<img src="data:image;base64,'.base64_encode( $row['img'] ).'" heigh="200" width="200"/>'?></li>
 					<li class="grey"><?php echo "\$". $row['rate']."/day"?></li>
 					<li><?php echo "Brand: ".$row['brand'] ?></li>	
 					<li><?php echo "Model: ".$row['model'] ?></li>	
