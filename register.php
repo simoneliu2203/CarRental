@@ -128,6 +128,17 @@ if (isset($_POST['submit'])) {
 		array_push($errors, "Missing info");
 		echo "<div align='center'>Missing info</div>";
 	}
+	
+	
+	if (!ctype_alnum($username)){
+		array_push($errors, "Invalid username");
+		echo "<div align='center'>Invalid username. Username should only contain letters and numbers</div>";
+	}
+	
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		array_push($errors, "Invalid email format");
+		echo "<div align='center'>Invalid email format</div>";
+    }
 
 	if ($password_1 != $password_2) {
 		array_push($errors, "The two passwords do not match");

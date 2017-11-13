@@ -85,11 +85,11 @@
     </tr>
     <tr>
       <td id="boxc2" colspan="2"><strong>Pick-up: </strong></td>
-      <td id="boxc2"><input style="text-align: center" type="text" name="pickup" placeholder="mm/dd/yyyy" id="from" required="required"></td>
+      <td id="boxc2"><input style="text-align: center" type="text" name="pickup" placeholder="mm/dd/yyyy" id="from" required="required" onkeydown="return false"></td>
     </tr>
     <tr>
       <td id="boxc2" colspan="2"><strong> Drop-off:</strong></td>
-      <td id="boxc2"><input style="text-align: center" type="text" name="dropoff" placeholder="mm/dd/yyyy" id="to" required="required"></td>
+      <td id="boxc2"><input style="text-align: center" type="text" name="dropoff" placeholder="mm/dd/yyyy" id="to" required="required" onkeydown="return false"></td>
     </tr>
 	 <tr>
       <td id="boxc2" colspan="2"><strong>Sorted by:</strong></td>

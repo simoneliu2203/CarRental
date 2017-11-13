@@ -1,165 +1,117 @@
 <?php 
-	include('employeeAccessControl.php');
+	include('customerAccessControl.php');
 ?>
+<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="jQueryAssets/jquery-1.11.1.min.js"></script>
+<script src="jQueryAssets/jquery.ui-1.10.4.datepicker.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/carlisting.css">
 
-<?php	
-	//Getting all the car's info that the customer chose to book
-	$car_id = $_GET['id'];
-?>
-
+<div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
+<div style="text-align:left; margin-left:10px"><a href="customerMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to Customer Menu</a></div>
 
 <?php
-	$errors = array();
-	if(isset($_REQUEST['update'])){
-		$brand = mysqli_real_escape_string($db, $_POST['brand']);
-		$model = mysqli_real_escape_string($db, $_POST['model']);
-		$type = mysqli_real_escape_string($db, $_POST['type']);
-		$year = mysqli_real_escape_string($db, $_POST['year']);
-		$color = mysqli_real_escape_string($db, $_POST['color']);
-		$rate = mysqli_real_escape_string($db, $_POST['rate']);
-		$mileage = mysqli_real_escape_string($db, $_POST['mileage']);
-		$capacity = mysqli_real_escape_string($db, $_POST['capacity']);
-		$available = mysqli_real_escape_string($db, $_POST['available']);
-		
-		if ($_FILES['img']['size'] > 64000) {
-			echo "<div align='center'>The file is too large</div>";
-			array_push($errors, 'File too large');
-		}
-		
-		$file_extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
-		
-		if ($file_extension != "jpg" && $file_extension != "png" && $file_extension != "jpeg" && $file_extension != "gif" ){
-			array_push($errors, 'extionsion not allowed');
-			echo "<div align='center'>Only JPG, JPEG, PNG & GIF files are allowed</div>";
-		}
-		
-		if (empty($_FILES['img']['name'])){
-			
-		}
-		
-		if (count($errors) == 0) {			
-			if (empty($_FILES['img']['name'])){
-				echo "<div align='center'>Car updated</div>";
-				$query = "update cars set brand = '$brand', model = '$model', type = '$type', year = '$year', color = '$color',rate = '$rate', mileage = '$mileage', capacity = '$capacity', available = '$available' where vin = '$car_id'";
-				mysqli_query($db, $query);
-			}
-			else {
-				$image = $_FILES['img']['tmp_name'];
-				$imgContent = addslashes(file_get_contents($image));
-				echo "<div align='center'>Car updated</div>";
-				$query = "update cars set brand = '$brand', model = '$model', type = '$type', year = '$year', color = '$color',rate = '$rate', mileage = '$mileage', capacity = '$capacity', available = '$available', img = '$imgContent' where vin = '$car_id'";
-				mysqli_query($db, $query);
-			}			
-		}
-	}	
+		$errors = array();
+	    if(isset($_REQUEST['update1'])){
+			include('profile.php');
+		}	
 ?>
 
 <?php
-	//Using query to get the car's info from database and print it out to the screen
-	$search_car = "SELECT * FROM cars WHERE vin = '$car_id'";	
-	$result=mysqli_query($db, $search_car);
-	while($row = mysqli_fetch_assoc($result)){
-		?>
-		<div align="center">
-			<?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['img'] ).'" heigh="200" width="200"/>'?>	
-		</div>
-	<?php
+		$errors = array();
+	    if(isset($_REQUEST['update2'])){
+			include('creditCard.php');
+		}
+?>
+<input type="text" id="Datepicker1">
+<script type="text/javascript">
+$(function() {
+	$("#cvv").mask("999");
+	$("#datedate").mask("99/99/9999");
+	$("#zipcode").mask("99999");
+	$("#creditcard").mask("9999 9999 9999 9999");
+	$("#phone").mask("(999) 999-9999");
+	$( "#Datepicker1" ).datepicker({minDate:0}); 
+});
+</script>
+
+
+<style>
+.button {
+    border: none;
+	border-radius: 12px;
+    color: white;
+    padding: 5px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
-?>
 
-<form enctype="multipart/form-data" action="" method="post">
-<table width="400" height="600" border="1" bordercolor="white" align="center">
-	  <tbody>
-		<tr>
-		  <td align="left">Image</td>
-		  <td align="right"><input type="file" name="img"></td>
-		</tr>
-		<tr>
-		  <td align="left">VIN</td>
-		  <td align="right"><?php 
-	  $result=mysqli_query($db, "select vin from cars where vin = '$car_id'");
-	  $row=mysqli_fetch_assoc($result);
-	  echo trim($row['vin']);?></td>
-		</tr>
-		<tr>
-		  <td align="left">Brand</td>
-		  <td align="right"><input type="text" name="brand" required="required" value="<?php 
-	  $result=mysqli_query($db, "select brand from cars where vin = '$car_id'");
-	  $row=mysqli_fetch_assoc($result);
-	  echo trim($row['brand']);
-	?>"></td>
-		</tr>
-		<tr>
-		  <td align="left">Model</td>
-		  <td align="right"><input type="text" name="model" required="required" value="<?php 
-	  $result=mysqli_query($db, "select model from cars where vin = '$car_id'");
-	  $row=mysqli_fetch_assoc($result);
-	  echo trim($row['model']);
-	?>"></td>
-		</tr>
-		<tr>
-		  <td align="left">Type</td>
-		  <td align="right"><input type="text" name="type" required="required" value="<?php 
-	  $result=mysqli_query($db, "select type from cars where vin = '$car_id'");
-	  $row=mysqli_fetch_assoc($result);
-	  echo trim($row['type']);
-	?>"></td>
-		</tr>
-		<tr>
-		  <td align="left">Year</td>
-		  <td align="right"><input type="text" name="year" required="required" value="<?php 
-	  $result=mysqli_query($db, "select year from cars where vin = '$car_id'");
-	  $row=mysqli_fetch_assoc($result);
-	  echo trim($row['year']);
-	?>"></td>
-		</tr>
-		<tr>
-		  <td align="left">Color</td>
-		  <td align="right"><input type="text" name="color" required="required" value="<?php 
-	  $result=mysqli_query($db, "select color from cars where vin = '$car_id'");
-	  $row=mysqli_fetch_assoc($result);
-	  echo trim($row['color']);
-	?>"></td>
-		</tr>
-		<tr>
-		  <td align="left">Rate</td>
-		  <td align="right"><input type="text" name="rate" required="required" value="<?php 
-	  $result=mysqli_query($db, "select rate from cars where vin = '$car_id'");
-	  $row=mysqli_fetch_assoc($result);
-	  echo trim($row['rate']);
-	?>"></td>
-		</tr>
-		<tr>
-		  <td align="left">Mileage</td>
-		  <td align="right"><input type="text" name="mileage" required="required" value="<?php 
-	  $result=mysqli_query($db, "select mileage from cars where vin = '$car_id'");
-	  $row=mysqli_fetch_assoc($result);
-	  echo trim($row['mileage']);
-	?>"></td>
-		</tr>
-		<tr>
-		  <td align="left">Capacity</td>
-		  <td align="right"><input type="text" name="capacity" required="required" value="<?php 
-	  $result=mysqli_query($db, "select capacity from cars where vin = '$car_id'");
-	  $row=mysqli_fetch_assoc($result);
-	  echo trim($row['capacity']);
-	?>"></td>
-		</tr>
-		<tr>
-		  <td align="left">Available</td>
-		  <td align="right"><input type="text" name="available" required="required" value="<?php 
-	  $result=mysqli_query($db, "select available from cars where vin = '$car_id'");
-	  $row=mysqli_fetch_assoc($result);
-	  echo trim($row['available']);
-	?>"></td>
-		</tr>  
-		<tr>
-		 <td  colspan="2" align="center"><input type="submit" name="update" value="Update"></td>
-		</tr>
-	  </tbody>
-	</table>
-</form>
+.button1 {
+    background-color: black; 
+    color: white; 
+    border: 2px solid black;
+}
 
+.button1:hover {
+    background-color: black;
+    color: antiquewhite;
+	border: 2px solid white;
+}
+body
+{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	min-width: 1000px;
+	min-height: 600px;
+		
+	background-image: url(); 
+	background-repeat:no-repeat;
+	background-size: cover;
+	
+}	
+	
+ #table{
+	 margin-top: 50px; 
+	 margin-left: 5% ;
+	 border: 4px solid black; 
+	 border-radius: 25px;
+	 border-collapse: separate;
+	}
+ #boxc1{
+	background-color: lightgray; 
+	opacity: 1;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	}
+
+ #boxc2{
+	background-color: ghostwhite; 
+	border: none;
+	opacity: 0.9;
+	}
+	
+ #boxc3{
+	background-color: dimgray; 
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	}
+	
+</style>
+<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.datepicker.min.css" rel="stylesheet" type="text/css">
+
+<script src="jQueryAssets/jquery-1.11.1.min.js"></script>
+<script src="jQueryAssets/jquery.ui-1.10.4.datepicker.min.js"></script>
+
+
+<script src="jQueryMask/src/jquery.maskedinput.js" type="text/javascript"></script>
 

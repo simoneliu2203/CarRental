@@ -8,6 +8,12 @@
 	$exp_date = date('Y-m-d',strtotime($_POST['exp_date']));
 	$name = mysqli_real_escape_string($db, $_POST['name']);
 	
+	$today = date("Y-m-d");
+	/*if ($exp_date <= $today){
+		array_push($errors, "Invalid date");
+		echo "<div align='center'>Invalid expiration date</div>";
+	}*/
+	
 	//Catch error, if any input is empty, print out message
 	if(empty($_POST["type"]) || empty($_POST["creditcard"]) || empty($_POST["cvv"]) || empty($_POST["exp_date"]) || empty($_POST["name"])){
 		array_push($errors, "All fields are required");

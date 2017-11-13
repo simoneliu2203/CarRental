@@ -4,7 +4,6 @@
 <link href="jQueryAssets/jquery.ui.datepicker.min.css" rel="stylesheet" type="text/css">
 <script src="jQueryAssets/jquery-1.11.1.min.js"></script>
 <script src="jQueryAssets/jquery.ui-1.10.4.datepicker.min.js"></script>
-<script src="jQueryMask/lib/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="jQueryMask/src/jquery.maskedinput.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -15,7 +14,7 @@
 		$("#zipcode").mask("99999");
         $("#creditcard").mask("9999 9999 9999 9999");
 		$("#phone").mask("(999) 999-9999");
-		
+		$( "#datepick" ).datepicker({minDate:0}); 
     });
 	
 </script>
@@ -154,7 +153,7 @@
 					</tr>
 					<tr>
 					  <td align="left">Expire date</td>
-					  <td align="right"><input type="text" id="date" name="exp_date" size="20" required="required" value="<?php 
+					  <td align="right"><input type="text" id="datepick" name="exp_date" size="20" required="required" onkeydown="return false" value="<?php 
 				  $result=mysqli_query($db, "select date_format(exp_date, '%m/%d/%Y') as fdate from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['fdate'];

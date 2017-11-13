@@ -89,8 +89,8 @@
         
       </tr>
       <tr>
-        <td><input style="text-align: center" type="text" id="from" name="pickup" placeholder="mm/dd/yyyy" required="required"></td>
-        <td><input style="text-align: center" type="text" id="to" name="dropoff" placeholder="mm/dd/yyyy" required="required"></td>
+        <td><input style="text-align: center" type="text" id="from" name="pickup" placeholder="mm/dd/yyyy" required="required" onkeydown="return false"></td>
+        <td><input style="text-align: center" type="text" id="to" name="dropoff" placeholder="mm/dd/yyyy" required="required" onkeydown="return false"></td>
         <td>
           <select name="sorted">
             <option value="rate">Rate</option>

@@ -19,6 +19,7 @@
 		}
 ?>
 
+
 <style>
 .button {
     border: none;
@@ -95,18 +96,17 @@ body
 <script src="jQueryAssets/jquery.ui-1.10.4.datepicker.min.js"></script>
 
 
-<script src="jQueryMask/lib/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="jQueryMask/src/jquery.maskedinput.js" type="text/javascript"></script>
+
 <script type="text/javascript">
-    $(function() {
-		$("#cvv").mask("999");
-		$("#date").mask("99/99/9999");
-		$("#zipcode").mask("99999");
-        $("#creditcard").mask("9999 9999 9999 9999");
-		$("#phone").mask("(999) 999-9999");
-		
-    });
-	
+$(function() {
+	$("#cvv").mask("999");
+	$("#datedate").mask("99/99/9999");
+	$("#zipcode").mask("99999");
+	$("#creditcard").mask("9999 9999 9999 9999");
+	$("#phone").mask("(999) 999-9999");
+	$( "#datepick" ).datepicker({minDate:0}); 
+});
 </script>
 
 
@@ -159,8 +159,8 @@ body
               </tr>  
               
              <tr>
-              <td id="boxc2" align="right"><strong>State</strong></td>
-              <td id="boxc2"><input size="45" type="text" rows="2" name="state" value="<?php 
+              <td id="boxc2" align="right"><strong>State (NC, CA, eg.)</strong></td>
+              <td id="boxc2"><input size="45" type="text" rows="2" name="state" maxlength="2" value="<?php 
 				  $result=mysqli_query($db, "select state from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['state'];
@@ -196,7 +196,7 @@ body
               
             <tr>
               <td id="boxc2" align="right"><strong>License state</strong></td>
-              <td id="boxc2"><input size="45" type="text" name="license_state" value="<?php 
+              <td id="boxc2"><input size="45" type="text" name="license_state" maxlength="2" value="<?php 
 				  $result=mysqli_query($db, "select license_state from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['license_state'];
@@ -242,7 +242,8 @@ body
             </tr>
             <tr>
               <td id="boxc2" align="right"><strong>Expire Date (mm/dd/yyyy)</strong></td>              
-              <td id="boxc2"><input type="text" id="date" name="exp_date" size="30" value="<?php 
+              <td id="boxc2">
+                <input size="30" type="text" id="datepick" name="exp_date" placeholder="mm/dd/yyyy" id="datepick" required="required" onkeydown="return false" value="<?php 
 				  $result=mysqli_query($db, "select date_format(exp_date, '%m/%d/%Y') as fdate from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['fdate'];
@@ -264,3 +265,5 @@ body
     </tr>
   </table>
 </form>
+
+
