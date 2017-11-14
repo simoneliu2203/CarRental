@@ -96,7 +96,7 @@
 		else if(isset($_POST['option']) && ($_POST['option']) == "overview")
 			header("location: overview.php");
 		else if(isset($_POST['option']) && ($_POST['option']) == "customer")
-			header("location: #");
+			header("location: editCustomer.php");
 		else if(isset($_POST['option']) && ($_POST['option']) == "booking")
 			header("location: manageBooking.php");
 ?>

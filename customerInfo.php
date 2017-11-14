@@ -21,6 +21,10 @@
 
 
 <style>
+.ui-datepicker .ui-datepicker-title select {
+	color: #000;
+}
+	
 .button {
     border: none;
 	border-radius: 12px;
@@ -105,10 +109,13 @@ $(function() {
 	$("#zipcode").mask("99999");
 	$("#creditcard").mask("9999 9999 9999 9999");
 	$("#phone").mask("(999) 999-9999");
-	$( "#datepick" ).datepicker({minDate:0}); 
+	$( "#datepick" ).datepicker({
+		changeMonth:true,
+		changeYear:true,
+		minDate:0
+	}); 
 });
 </script>
-
 
 
 <form method="post" action="">

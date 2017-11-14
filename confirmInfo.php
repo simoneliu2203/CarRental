@@ -14,10 +14,20 @@
 		$("#zipcode").mask("99999");
         $("#creditcard").mask("9999 9999 9999 9999");
 		$("#phone").mask("(999) 999-9999");
-		$( "#datepick" ).datepicker({minDate:0}); 
+		$( "#datepick" ).datepicker({
+			minDate:0,
+			changeMonth:true,
+			changeYear:true
+		}); 
     });
 	
 </script>
+
+<style>
+	.ui-datepicker .ui-datepicker-title select {
+		color: #000;
+	}
+</style>
 
 <!-- Create table for customer profile and credit card info --> 
 <!-- Print out customers' information and credit card info from database --> 
@@ -71,7 +81,7 @@
 					</tr>
 					<tr>
 					  <td align="left">State</td>
-					  <td align="right"><input type="text" name="state" required="required" value="<?php 
+					  <td align="right"><input type="text" name="state" required="required" maxlength="2" value="<?php 
 				  $result=mysqli_query($db, "select state from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['state'];
@@ -103,7 +113,7 @@
 					</tr>
 					<tr>
 					  <td align="left">License state</td>
-					  <td align="right"><input type="text" name="license_state" required="required"  value="<?php 
+					  <td align="right"><input type="text" name="license_state" required="required" maxlength="2" value="<?php 
 				  $result=mysqli_query($db, "select license_state from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
 				  echo $row['license_state'];
@@ -128,7 +138,7 @@
 					  <td colspan="2"><h2>Billing Information</h2></td>
 					</tr>
 					<tr>
-					  <td align="left">Type</td>
+					  <td align="left">Type (Master, Visa, eg.)</td>
 					  <td align="right"><input type="text" name="type" required="required" value="<?php 
 				  $result=mysqli_query($db, "select type from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);

@@ -164,10 +164,17 @@ if (isset($_POST['submit'])) {
 	if (count($errors) == 0) {
 		//$password = md5($password_1);//encrypt the password before saving in the database
 		
+		/*$query = "INSERT INTO users (username, email, password, acc_type) 
+				  VALUES('$username', '$email', '$pass_encrypted','customer')";*/
+		
 		$query = "INSERT INTO users (username, email, password, acc_type) 
-				  VALUES('$username', '$email', '$pass_encrypted','customer')";
-				
-		mysqli_query($db, $query);
+				  VALUES(?)";
+		$statement = $db->prepare($query);
+		$statement->bind_param("s", $username);
+		$statement->bind_result($username, $email, $pass_encrypted);
+		$statement->execute();
+	   
+		//mysqli_query($db, $query);
 		
 		$_SESSION['username'] = $username;
 		//$_SESSION['success'] = "You are now logged in";
