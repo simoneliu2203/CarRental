@@ -10,8 +10,11 @@
 	 if(isset($_REQUEST['booking_detail'])){
 		 header('location: manageBooking.php');
 	 }
-	 if(isset($_REQUEST['vihcle_detail'])){
+	 if(isset($_REQUEST['vehicle_detail'])){
 		 header('location: vehicleListing.php');
+	 }
+	 if(isset($_REQUEST['customer_detail'])){
+		 header('location: editCustomer.php');
 	 }
 ?>
 
@@ -129,7 +132,7 @@ body
             </tr>
                    
             <tr>
-              <td id="boxc3" colspan="2"><input type="submit" name="vihcle_detail" value="Detail" class="button button1"></td>
+              <td id="boxc3" colspan="2"><input type="submit" name="vehicle_detail" value="Detail" class="button button1"></td>
               
           </table>
        </td>

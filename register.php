@@ -122,6 +122,7 @@ if (isset($_POST['submit'])) {
 	$password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
 	$password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 	$pass_encrypted = md5($password_1);
+	$acc_type = "customer";
 
 	// form validation: ensure that the form is correctly filled
 	if(empty($_POST["username"]) || empty($_POST["email"]) || empty($_POST["password_1"]) || empty($_POST["password_2"])) {
@@ -164,20 +165,20 @@ if (isset($_POST['submit'])) {
 	if (count($errors) == 0) {
 		//$password = md5($password_1);//encrypt the password before saving in the database
 		
-		/*$query = "INSERT INTO users (username, email, password, acc_type) 
-				  VALUES('$username', '$email', '$pass_encrypted','customer')";*/
+		//$query = "INSERT INTO users (username, email, password, acc_type) 
+				 // VALUES('$username', '$email', '$pass_encrypted','customer')";
 		
 		$query = "INSERT INTO users (username, email, password, acc_type) 
-				  VALUES(?)";
+				  VALUES(?,?,?,?)";
 		$statement = $db->prepare($query);
-		$statement->bind_param("s", $username);
-		$statement->bind_result($username, $email, $pass_encrypted);
+		$statement->bind_param("ssss", $username, $email, $pass_encrypted, $acc_type);
+		
+		//$statement->bind_result($username, $email, $pass_encrypted);
 		$statement->execute();
 	   
 		//mysqli_query($db, $query);
 		
 		$_SESSION['username'] = $username;
-		//$_SESSION['success'] = "You are now logged in";
 		echo "<div align='center'>You're a member now! Please Sign in!</div>";
 	}
 

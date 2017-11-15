@@ -9,6 +9,8 @@
 	$car_id = $_GET['id'];
 ?>
 
+<div style="text-align:right; margin-right:20px; color: red">Employee: <?php echo $username?></div>
+<div style="text-align:left; margin-left:10px"><a href="employeeMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to the Menu</a></div>
 
 <?php
 	$errors = array();
