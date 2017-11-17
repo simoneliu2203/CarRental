@@ -13,7 +13,7 @@
   <tbody>
     <tr>
       <td><?php include("search.php"); ?></td>
-      <td><img src="Images/1.PNG" width="500" height="350" alt=""/></td>
+      <td><img src="Images/2.PNG" width="500" height="350" alt=""/></td>
       
     </tr>
   </tbody>
