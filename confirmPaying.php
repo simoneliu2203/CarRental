@@ -8,6 +8,8 @@
 	$new_drop = date_create($dropoff);	
 	$diff = date_diff($new_drop,$new_pick);
 	$days = $diff->days;	
+	$dpickup = date('Y-m-d', strtotime($pickup));
+    $ddropoff = date('Y-m-d', strtotime($dropoff));
 
 	//Using query to get the car's info from database and print it out to the screen
 	$search_car = "SELECT * FROM cars WHERE vin = '$car_id'";	
@@ -29,15 +31,19 @@
 }
 ?>
 
-
 <?php
 	//After customer confirmed their booking, insert to the database the booking info includes 
 	//customer username, vin number, dates, and status (status by defaul always start with pending) 
 	if(isset($_POST["confirm"])){
 		$query = "INSERT INTO booking (c_username, vin, pickup, dropoff, status) 
 				  VALUES('$username', '$car_id', '$pickup','$dropoff', 'pending')";
-		
 		mysqli_query($db, $query);
+		
+		$stotal = mysqli_query($db, "SELECT total from get_quote where c_username='$username' and vin='$car_id' and pickup='$dpickup' and dropoff='$ddropoff'");
+		$stotal2 = mysqli_fetch_array($stotal);
+		$total = $stotal2['total'];
+		
+		mysqli_query($db, $query2);
 		
 		//Have the pop up notification to let the customer know their booking has been submitted
 		if (TRUE) {
@@ -49,4 +55,27 @@
 	}
 ?>
 
+<?php 
+	//transaction process
 
+	$mysqli = $db;
+
+	$mysqli->autocommit(false);
+
+	$result1 = $mysqli->query("UPDATE bankaccount SET abalance = abalance-$total WHERE c_username='$username'");
+
+	if ($result1 == false){
+		$mysqli->rollback();
+	}
+	else {
+		$result2 = $mysqli->query("INSERT INTO profit (c_username, amount) values ('$username', $total)");
+
+		if ($result2 == false){
+			$mysqli->rollback();
+		}
+
+		else {
+			$mysqli->commit();	
+		}
+	}
+?>
