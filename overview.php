@@ -88,6 +88,15 @@ body
 	
 </style>
 
+<h2> Profit have made </h2>
+
+<?php
+	 $result=mysqli_query($db, "call totalProfit(@p0)");
+	 $result2=mysqli_query($db, "select @p0 as 'total'");
+	 $row=mysqli_fetch_assoc($result2); 
+	 echo "<div align='center'; style='color:blue; font-size:40px;'>".'$'.$row['total']."</div>";
+?>
+
 <form method="post" action="">
   <table style="margin-top: 5px; margin-left: auto ; margin-right: auto; ">
     <tr>
