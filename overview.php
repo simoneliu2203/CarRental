@@ -88,7 +88,7 @@ body
 	
 </style>
 
-<h2> Profit have made </h2>
+<h2> Profit has made </h2>
 
 <?php
 	 $result=mysqli_query($db, "call totalProfit(@p0)");

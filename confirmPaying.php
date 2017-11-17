@@ -42,9 +42,7 @@
 		$stotal = mysqli_query($db, "SELECT total from get_quote where c_username='$username' and vin='$car_id' and pickup='$dpickup' and dropoff='$ddropoff'");
 		$stotal2 = mysqli_fetch_array($stotal);
 		$total = $stotal2['total'];
-		
-		mysqli_query($db, $query2);
-		
+				
 		//Have the pop up notification to let the customer know their booking has been submitted
 		if (TRUE) {
 			echo "<script type = \"text/javascript\">
@@ -76,6 +74,8 @@
 
 		else {
 			$mysqli->commit();	
+			
 		}
 	}
+	$mysqli->autocommit(true);
 ?>

@@ -16,5 +16,5 @@
 
 <?php 
 	include('confirmPaying.php');
-	include('confirmInfo.php') 
+	include('confirmInfo.php'); 		
 ?>
