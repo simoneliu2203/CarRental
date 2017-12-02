@@ -2,10 +2,13 @@
 	include('employeeAccessControl.php');
 ?>
 
+<!-- shows that the user is logged in as an employee -->
 <div style="text-align:right; margin-right:20px; color: red">Employee: <?php echo $username?></div>
+<!-- takes user back to the employee main menu once they click on it -->
 <div style="text-align:left; margin-left:10px"><a href="employeeMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to the Menu</a></div>
 
 <style>
+/* button styles */
 .button {
     border: none;
 	border-radius: 12px;
@@ -20,12 +23,14 @@
     cursor: pointer;
 }
 
+/* button style when mouse isn't hovered over it */
 .button1 {
     background-color: white; 
     color: black; 
     border: 2px solid white;
 }
 
+/* button style when mouse is hovered over it */
 .button1:hover {
     background-color: black;
     color: white;
@@ -34,6 +39,7 @@
 </style>
 
 <?php
+	/* Add the information that the user inputs into the mysql database */
 	$errors = array();
 	if(isset($_REQUEST['submit'])){
 		$vin = mysqli_real_escape_string($db, $_POST['vin']);
@@ -48,16 +54,19 @@
 
 		$vinSQL=mysqli_query($db,"SELECT vin FROM cars WHERE vin='$vin'");				
 		
+		/* makes sure that the VIN is unique, if taken already, then an error message pops up */
 		if (mysqli_num_rows($vinSQL) == 1){
 			echo "<div align='center'>VIN '$vin' is already in the system</div>";
 			array_push($errors, "VIN taken");
 		}
 		
+		/* if the user doesn't select a picture when adding a car, an error message pops up */
 		if (getimagesize($_FILES['img']['tmp_name'])==FALSE){
 			echo "<div align='center'>Please select a picture</div>";
 			array_push($errors, "No picture selected");
 		}
 
+		/* if the image that the user uploads is bigger than 64 kb, then an error message pops up */
 		if ($_FILES['img']['size'] > 64000) {
 			echo "<div align='center'>The file is too large</div>";
 			array_push($errors, 'File too large');
@@ -65,20 +74,23 @@
 		
 		$file_extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
 		
+		/* makes sure that the file extension for the image is either a jpg, jpeg, png, or gif. If user submits a different file format, then an error message pops up */
 		if ($file_extension != "jpg" && $file_extension != "png" && $file_extension != "jpeg" && $file_extension != "gif" ){
 			array_push($errors, 'extension not allowed');
 			echo "<div align='center'>Only JPG, JPEG, PNG & GIF files are allowed</div>";
 		}
 		
+		/* makes sure that there are no errors */
 		if (count($errors) == 0) {			
 			$image = $_FILES['img']['tmp_name'];
 			$imgContent = addslashes(file_get_contents($image));
 
-			
+			/* when the user adds a car, the information will be sent to the cars database in mysql and all of the attributes will be recorded */
 			$query = "INSERT INTO cars(vin, brand, model, type, year, color, rate, mileage, capacity, img, available) VALUES ('$vin', '$brand', '$model', '$type', '$year', '$color', '$rate', '$mileage', '$capacity','$imgContent', 'yes')";
 			
 			mysqli_query($db, $query);
 			
+			/* lets the user know that the car has been successfully added */
 			echo "<div align='center'>Car added</div>";
 		}
 

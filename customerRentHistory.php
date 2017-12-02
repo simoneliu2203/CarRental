@@ -3,6 +3,7 @@
 ?>
 
 <?php 	
+	// if customer decides to cancel their booking, then the information will be updated in the mysql database
 	if(isset($_POST["cancel"])){
  		$id = $_POST['cancel'];
 		$query = "update booking set status = 'cancelled' where booking_id = '$id'";
@@ -14,17 +15,22 @@
 <script type='text/javascript'>
 function confirmCancel()
 {
+	// notification asking customer if they really want to cancel
 	return confirm("Are you sure you want to cancel this?");
 	window.opener.location.reload(true);
 	window.close();
 }
 </script>
 
+<!-- shows that the user is logged in as a customer -->
 <div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
+<!-- takes user back to the customer main menu once they click on it -->
 <div style="text-align:left; margin-left:10px"><a href="customerMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to Customer Menu</a></div>
 
+<!-- style of title of page -->
 <h2 align="center">Booking History</h2>
 
+<!-- style of table and attributes listed within the table -->
 <form method="post" action="">
 <?php echo "<table border=2 align=center width='90%'>
 			<tr>
@@ -42,8 +48,10 @@ function confirmCancel()
 
 			</tr>";
 		
+			// connect the mysql database to the code using username and fetch all of the info that comes with the username
 			$rented_car = mysqli_query($db,"SELECT * FROM get_quote natural join cars WHERE c_username = '$username'");
 			
+			// display attributes of booking
 			$today =  date_create();
 			if (mysqli_num_rows($rented_car) != 0){
 				while($row = mysqli_fetch_assoc($rented_car)){
@@ -64,6 +72,7 @@ function confirmCancel()
 					if ($diff>=0 && $row['status']!='cancelled' && $row['status']!='declined'){
 						?> 
 							<td>
+								<!-- style for cancel button -->
 								<button type="submit" name="cancel" value="<?php echo $row['booking_id']?>" onclick='return confirmCancel()'>Cancel</button>
 						   </td> 	
 						<?php
@@ -75,6 +84,7 @@ function confirmCancel()
 				}
 			}
 			else {
+				// notification letting user know that they have not booked a car yet if they have not yet
 				echo "<p align='center'>You have not book any cars yet</p>";
 			}
 

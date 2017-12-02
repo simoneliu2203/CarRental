@@ -2,6 +2,7 @@
 	include('employeeAccessControl.php');
 ?>
 
+<!-- connecting to css files -->
 <link rel="stylesheet" type="text/css" href="css/carlisting.css">
 
 <?php	
@@ -9,12 +10,15 @@
 	$car_id = $_GET['id'];
 ?>
 
+<!-- shows that the user is logged in as an employee -->
 <div style="text-align:right; margin-right:20px; color: red">Employee: <?php echo $username?></div>
+<!-- takes user back to the employee main menu once they click on it -->
 <div style="text-align:left; margin-left:10px"><a href="employeeMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to the Menu</a></div>
 
 <?php
 	$errors = array();
 	if(isset($_REQUEST['update'])){
+		// if user requests update, then retrieves info on car from mysql database
 		$brand = mysqli_real_escape_string($db, $_POST['brand']);
 		$model = mysqli_real_escape_string($db, $_POST['model']);
 		$type = mysqli_real_escape_string($db, $_POST['type']);
@@ -28,21 +32,25 @@
 		$file_extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);		
 		
 		if (empty($_FILES['img']['name'])){
+			// once car is updated, the updated info gets sent to the mysql database
 			echo "<div align='center'>Car updated</div>";
 			$query = "update cars set brand = '$brand', model = '$model', type = '$type', year = '$year', color = '$color',rate = '$rate', mileage = '$mileage', capacity = '$capacity', available = '$available' where vin = '$car_id'";
 			mysqli_query($db, $query);
 		}
 		else{
+			// the image has to be a size of less than 64kb, if it's too large, then an error message pops up
 			if ($_FILES['img']['size'] > 64000) {
 				echo "<div align='center'>The file is too large</div>";
 				array_push($errors, 'File too large');
 			}
 			
+			// the image has to be a certain type of image, such as jpg, png, gif, etc, if it's none of the allowed formats, then an error message pops up
 			if ($file_extension != "jpg" && $file_extension != "png" && $file_extension != "jpeg" && $file_extension != "gif" ){
 				array_push($errors, 'extionsion not allowed');
 				echo "<div align='center'>Only JPG, JPEG, PNG & GIF files are allowed</div>";
 			}
 			
+			// if there are no errors, then updates the info to the database successfully 
 			if (count($errors) == 0){
 				$image = $_FILES['img']['tmp_name'];
 				$imgContent = addslashes(file_get_contents($image));
@@ -68,6 +76,8 @@
 }
 ?>
 
+<!-- fetch data, such as image, VIN, brand, etc., from the mysql database and print it out for the user to see -->
+<!-- some fields are required -->
 <form enctype="multipart/form-data" action="" method="post">
 <table width="400" height="600" border="1" bordercolor="white" align="center">
 	  <tbody>
@@ -155,6 +165,7 @@
 	?>"></td>
 		</tr>  
 		<tr>
+		<!-- set style for button -->
 		 <td  colspan="2" align="center"><input type="submit" name="update" value="Update"></td>
 		</tr>
 	  </tbody>

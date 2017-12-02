@@ -1,5 +1,5 @@
 <?php
-//Taking all the input from user and insert/update it back to the database
+//Taking all the input from user, such as username, type, credit card, etc., and insert/update it back to the database
 {
 	$username = $_SESSION ['username'];
 	$type = mysqli_real_escape_string($db, $_POST['type']);

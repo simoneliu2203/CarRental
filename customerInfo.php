@@ -2,10 +2,15 @@
 	include('customerAccessControl.php');
 ?>
 
+<!-- shows that the user is logged in as a customer -->
 <div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
+<!-- takes user back to the customer main menu once they click on it -->
 <div style="text-align:left; margin-left:10px"><a href="customerMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to Customer Menu</a></div>
 
+
 <?php
+//If user clicks "update," call page profile.php or creditCard.php 
+//this handles updating the profile and credit card info back to the database
 		$errors = array();
 	    if(isset($_REQUEST['update1'])){
 			include('profile.php');
@@ -25,6 +30,7 @@
 	color: #000;
 }
 	
+/* sets the style for the buttons */
 .button {
     border: none;
 	border-radius: 12px;
@@ -39,12 +45,14 @@
     cursor: pointer;
 }
 
+/* sets the style for the button when it's not hovered over by the cursor */
 .button1 {
     background-color: black; 
     color: white; 
     border: 2px solid black;
 }
 
+/* sets the style for the button when it's hovered over by the cursor */
 .button1:hover {
     background-color: black;
     color: antiquewhite;
@@ -52,6 +60,7 @@
 }
 body
 {
+	/* sets the style for the body of the page */
 	margin: 0;
 	padding: 0;
 	width: 100%;
@@ -64,7 +73,8 @@ body
 	background-size: cover;
 	
 }	
-	
+
+/* sets the style of the table in which the user will input information */	
  #table{
 	 margin-top: 50px; 
 	 margin-left: 5% ;
@@ -72,19 +82,23 @@ body
 	 border-radius: 25px;
 	 border-collapse: separate;
 	}
+	
+/* sets the style for the background behind the title within the input table */
  #boxc1{
 	background-color: lightgray; 
 	opacity: 1;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 	}
-
+	
+/* sets the style for the background behind the body of the table whithin the input table */
  #boxc2{
 	background-color: ghostwhite; 
 	border: none;
 	opacity: 0.9;
 	}
-	
+
+/* sets the style for the background behind the 'update' button at the bottom of the input table */
  #boxc3{
 	background-color: dimgray; 
 	border-bottom-left-radius: 15px;
@@ -92,6 +106,7 @@ body
 	}
 	
 </style>
+<!-- connects to the css files -->
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.datepicker.min.css" rel="stylesheet" type="text/css">
@@ -103,6 +118,7 @@ body
 <script src="jQueryMask/src/jquery.maskedinput.js" type="text/javascript"></script>
 
 <script type="text/javascript">
+// Format the input from user so that only a certain number of values can be inputted by the user for certain attributes
 $(function() {
 	$("#cvv").mask("999");
 	$("#datedate").mask("99/99/9999");
@@ -117,7 +133,7 @@ $(function() {
 });
 </script>
 
-
+<!-- style format for the input tables -->
 <form method="post" action="">
   <table style="margin-top: 5px; margin-left: auto ; margin-right: auto; ">
     <tr>
@@ -126,9 +142,14 @@ $(function() {
           <tbody>
            
             <tr>
+			<!-- style format for the font and title of the Profile table -->
               <td id="boxc1" colspan="3" style="border:none; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="7" color="red" align="center">Profile</td>
               </tr>
-              
+             
+			<!-- style format for the input values -->
+            <!-- these are attributes that the user can input into the profile table, such as first name, last name, address, etc. -->
+			<!-- the info inputted will be sent to the mysql database with its corresponding attributes -->
+			<!-- if there's already information on the customer in the system, then it fetches the info of the customer from the mysql database and displays it -->  
             <tr>
               <td id="boxc2" align="right"><strong>First name</strong></td>
               <td id="boxc2"><input size="45" type="text" name="first" value="<?php 
@@ -212,18 +233,26 @@ $(function() {
              
             
             <tr>
+			<!-- set style for the update button -->
               <td id="boxc3" colspan="2"><input type="submit" name="update1" value="Update" class="button button1"></td>
               
             </tbody>
           </table>
         </td>
       <td>
+	  <!-- style format for the input tables -->
         <table id="table" width="600" height="550" border="1" style="margin-left: 80px; border-radius: 20px">
           <tbody>
             <tr>
+			<!-- style format for the font and title of the Profile table -->
               <td id="boxc1" colspan="3" style="border:none; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="7" color="red" align="center">Payment Information</td>
             </tr>
             <tr>
+			
+			<!-- style format for the input values -->
+            <!-- these are attributes that the user can input into the profile table, such as first name, last name, address, etc. -->
+			<!-- the info inputted will be sent to the mysql database with its corresponding attributes -->
+			<!-- if there's already information on the customer in the system, then it fetches the info of the customer from the mysql database and displays it -->  
               <td id="boxc2" align="right"><strong>Type (Visa, Master, eg.)</strong></td>
               <td id="boxc2"><input size="30" type="text" name="type" value="<?php 
 				  $result=mysqli_query($db, "select type from bankaccount where c_username = '$username' ");
@@ -265,6 +294,7 @@ $(function() {
 				?>"></td>
             </tr>            
             <tr>
+			<!-- set style for the update button -->
               <td id="boxc3" colspan="2"><input type="submit" name="update2" value="Update" class="button button1"></td>
               
           </table>

@@ -1,5 +1,5 @@
 <?php	
-	//Getting all the car's info that the customer chose to book
+	//Getting all the car's info from the mysql database that the customer chose to book
 	$car_id = $_GET['id'];
 	$pickup=$_SESSION['pickup'];
 	$dropoff=$_SESSION['dropoff'];
@@ -18,6 +18,7 @@
 		?>
 		<div class="columns">
 			<ul class="price">
+				<!-- displays the car information for the car that the user picked, including the picture of the car -->
 				<li><?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['img'] ).'" heigh="200" width="200"/>'?>	</li>
 				<li class="grey"><?php echo "\$". $row['rate']."/day"?></li>
 				<li><?php echo "Brand: ".$row['brand'] ?></li>	

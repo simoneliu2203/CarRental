@@ -4,6 +4,7 @@
 ?>
 
 <!DOCTYPE html>
+<!-- style for title in html -->
 <html>
 <head>
 <title>Seahawk Rent-A-Car </title>
@@ -12,12 +13,13 @@
 <style>
 body {margin:0;}
 
-
+/* sets style of the top navigation bar */
 .topnav {
   overflow: hidden;
   background-color: black;
 }
 
+/* sets style of .topnav when not hovered over by a cursor */
 .topnav a {
   float: right;
   display: block;
@@ -29,11 +31,13 @@ body {margin:0;}
   font-size: 18px;
 }
 
+/* sets style of .topnav when hovered over by a cursor */
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
 
+/* sets style of .topnav */
 .topnav a.active {
     background-color: #4CAF50;
     color: white;
@@ -42,6 +46,7 @@ body {margin:0;}
 
 
 </style>
+<!-- connects to css files -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
@@ -56,6 +61,7 @@ body {margin:0;}
 <script src="jQueryAssets/jquery.ui-1.10.4.datepicker.min.js"></script>
 </head>
 
+<!-- style format for text in upper right corner of the page -->
 <i><font size="6" align="center"><i><font size="6" align="center">
 <div class="row" style="background-color:white;padding:1px hspace=20">
   <div class="col-lg-3"><img src="Images/logo.png" width="350" height="80" align="left"></div>
@@ -63,7 +69,7 @@ body {margin:0;}
   <div class="col-lg-4"><i><font size="3" align="center">Contact: (000)123-4567<br/>Location: Somewhere in Wilmington</br/>  </div>
 </div>
 
- 
+<!-- style format for menu options in top navigation bar -->
 <div class="topnav">
   <a href="aboutus.php" class="titleButton">About us</a>
   <a href="map.php" class="titleButton">Map</a>
