@@ -1,12 +1,12 @@
 <?php 
-// once user logins, link to headerLogin.php
+	// once user starts session, link to headerLogin.php
 	session_start();
 	if (isset($_SESSION['username'])) {
 		$username = $_SESSION['username'];
 		include('headerLogin.php');
 	}
 	else {
-		// if user hasn't login yet, then link to header.php
+		// if session hasn't started yet, then link to header.php
 		include('header.php');
 	}
 ?>

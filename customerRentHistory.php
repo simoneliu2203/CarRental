@@ -1,8 +1,9 @@
 <?php 
+	// links customerRent.php to customerAccessControl.php
 	include('customerAccessControl.php');
 ?>
 
-<?php 	
+<?php 
 	// if customer decides to cancel their booking, then the information will be updated in the mysql database
 	if(isset($_POST["cancel"])){
  		$id = $_POST['cancel'];
@@ -23,7 +24,7 @@ function confirmCancel()
 </script>
 
 <!-- shows that the user is logged in as a customer -->
-<div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
+<div style="text-align:right; margin-right:20px; color: red">Logged in as: <?php echo $username?></div>
 <!-- takes user back to the customer main menu once they click on it -->
 <div style="text-align:left; margin-left:10px"><a href="customerMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to Customer Menu</a></div>
 
@@ -85,7 +86,7 @@ function confirmCancel()
 			}
 			else {
 				// notification letting user know that they have not booked a car yet if they have not yet
-				echo "<p align='center'>You have not book any cars yet</p>";
+				echo "<p align='center'>You have not booked any cars yet</p>";
 			}
 
 ?>

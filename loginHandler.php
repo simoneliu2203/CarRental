@@ -1,11 +1,11 @@
 <?php
-
+	// if user is in session, then session starts
     if(!isset($_SESSION)) 
     { 
 		ob_start();
         session_start(); 
     } 	
-	
+
 	// this goes through any possibility of any errors that the program may encounter
 	$errors = array();
 	if(isset($_POST["login"])){
@@ -26,10 +26,10 @@
 			}
 			
 			if (count($errors) == 0) {
-				//Check username and password from database
+				// Check username and password from database
 				$result=mysqli_query($db,"SELECT username FROM users WHERE username='$username' and password = '$pass_encrypted'");
 
-				//Get account type 
+				// Get account type 
 				$acc_type=mysqli_query($db, "SELECT acc_type FROM users WHERE username='$username'");
 
 				$row = mysqli_fetch_assoc($acc_type);

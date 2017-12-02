@@ -1,4 +1,5 @@
 <?php
+	// links header.php to localhost
 	include("/home/yml4331/connection.php");
 	ob_start();
 ?>
@@ -36,7 +37,7 @@ body {margin:0;}
   background-color: #ddd;
   color: black;
 }
-
+	
 /* sets style of .topnav */
 .topnav a.active {
     background-color: #4CAF50;
@@ -71,7 +72,7 @@ body {margin:0;}
 
 <!-- style format for menu options in top navigation bar -->
 <div class="topnav">
-  <a href="aboutus.php" class="titleButton">About us</a>
+  <a href="aboutus.php" class="titleButton">About Us</a>
   <a href="map.php" class="titleButton">Map</a>
   <a href="register.php" class="titleButton">Login/Register</a>
   <a href="index.php" class="titleButton">Home</a>

@@ -1,8 +1,10 @@
 <?php
+	// links headerLogin.php to localhost
 	include("/home/yml4331/connection.php")
 ?>
 
 <!DOCTYPE html>
+<!-- style for title in html -->
 <html>
 <head>
 <title>Seahawk Rent-A-Car </title>
@@ -11,12 +13,13 @@
 <style>
 body {margin:0;}
 
-
+/* sets style of the top navigation bar */
 .topnav {
   overflow: hidden;
   background-color: black;
 }
 
+/* sets style of .topnav when not hovered over by a cursor */
 .topnav a {
   float: right;
   display: block;
@@ -28,11 +31,13 @@ body {margin:0;}
   font-size: 18px;
 }
 
+/* sets style of .topnav when hovered over by a cursor */
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
 
+/* sets style of .topnav */
 .topnav a.active {
     background-color: #4CAF50;
     color: white;
@@ -41,6 +46,7 @@ body {margin:0;}
 
 
 </style>
+<!-- connects to css files -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
@@ -55,6 +61,7 @@ body {margin:0;}
 <script src="jQueryAssets/jquery.ui-1.10.4.datepicker.min.js"></script>
 </head>
 
+<!-- style format for text in upper right corner of the page -->
 <i><font size="6" align="center"><i><font size="6" align="center">
 <div class="row" style="background-color:white;padding:1px hspace=20">
   <div class="col-lg-3"><img src="Images/logo.png" width="350" height="80" align="left"></div>
@@ -62,12 +69,13 @@ body {margin:0;}
   <div class="col-lg-4"><i><font size="3" align="center">Contact: (000)123-4567<br/>Location: Somewhere in Wilmington</br/></div>
 </div>
 
-
+<!-- style format for menu options in top navigation bar -->
 <div class="topnav">
   <a href="logout.php" class="titleButton" style="color: greenyellow">Logout?</a>
   <a href="aboutus.php" class="titleButton">About us</a>
   <a href="map.php" class="titleButton">Map</a>
 	<?php 
+	// different menu options based on type of user (customer or employee) based on username
 	if (isset($_SESSION['username'])) { 
 		$result=mysqli_query($db,"SELECT username FROM users WHERE username='$username'");
 
@@ -75,6 +83,9 @@ body {margin:0;}
 		$row = mysqli_fetch_assoc($user_type);
 		if(mysqli_num_rows($result) == 1)
 			{	?>
+				<!-- different Menu reference buttons based on account type -->
+				<!-- if user is a customer, then Menu option links to customerMenu.php -->
+				<!-- if user is an employee, then Menu option links to employeeMenu.php -->
 				<?php if($row['acc_type']=="customer") { ?>
 						<a href="customerMenu.php" class="titleButton">Menu</a>
 				<?php } else { ?>
@@ -84,7 +95,7 @@ body {margin:0;}
 	
 	}
 	?>
-	
+<!-- style format for menu option Home in top navigation bar -->	
   <a href="index.php" class="titleButton">Home</a>
 </div> 
     

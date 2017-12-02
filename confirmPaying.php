@@ -33,8 +33,8 @@
 ?>
 
 <?php
-	//After customer confirmed their booking, insert to the database the booking info includes 
-	//customer username, vin number, dates, and status (status by defaul always start with pending) 
+	//After customer confirms their booking, insert into the database the booking info 
+	//this includes customer username, vin number, dates, and status (status by default always start with pending) 
 	if(isset($_POST["confirm"])){
 		$query = "INSERT INTO booking (c_username, vin, pickup, dropoff, status) 
 				  VALUES('$username', '$car_id', '$pickup','$dropoff', 'pending')";
@@ -44,7 +44,7 @@
 		$stotal2 = mysqli_fetch_array($stotal);
 		$total = $stotal2['total'];
 				
-		//Have the pop up notification to let the customer know their booking has been submitted
+		//Have the pop up notification to let the customer know their booking has been submitted for approval
 		if (TRUE) {
 			echo "<script type = \"text/javascript\">
 			alert(\"Thank you for booking. Your payment is Being Verified. Once it is processed, we'll email additional details!\");
@@ -55,18 +55,20 @@
 ?>
 
 <?php 
-	//transaction process
+	//transaction process which connects to the mysql database
 
 	$mysqli = $db;
 
 	$mysqli->autocommit(false);
 
+	//this updates the bankaccount database 
 	$result1 = $mysqli->query("UPDATE bankaccount SET abalance = abalance-$total WHERE c_username='$username'");
 
 	if ($result1 == false){
 		$mysqli->rollback();
 	}
 	else {
+		//this updates the profit database 
 		$result2 = $mysqli->query("INSERT INTO profit (c_username, amount) values ('$username', $total)");
 
 		if ($result2 == false){

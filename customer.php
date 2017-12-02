@@ -1,4 +1,5 @@
 <?php 
+	// links customer.php to employeeAccessControl.php
 	include('employeeAccessControl.php');
 ?>
 
@@ -32,9 +33,9 @@
 		$license = mysqli_real_escape_string($db, $_POST['license']);
 		$license_state = mysqli_real_escape_string($db, $_POST['license_state']);				
 		
-			/* if there are no errors when updating the customer's information, then print 'Customer Updated' and send new information inputted into the mysql database */
+		/* if there are no errors when updating the customer's information, then print 'Customer Updated' and send new information inputted into the mysql database */
 			if (count($errors) == 0){
-				echo "<div align='center'>Customer updated</div>";
+				echo "<div align='center'>Customer Updated</div>";
 				$query = "update customers set first = '$first', last = '$last', address = '$address', city = '$city', state = '$state', zipcode = '$zipcode', phone = '$phone', license = '$license', license_state = '$license_state' where c_username = '$c_username'";
 				mysqli_query($db, $query);
 			}
@@ -61,9 +62,9 @@ $(function() {
 <table width="400" height="600" border="1" bordercolor="white" align="center">
 	  <tbody>
 	
-		<!-- style of table and what will be put in each column and row, such as username, first name, last name, etc. -->	
+	<!-- style of table and what will be put in each column and row, such as username, first name, last name, etc. -->	
 		<tr>
-		<!-- fetches the usernames of customers from the mysql database and displays them in the table -->
+	  	<!-- fetches the usernames of customers from the mysql database and displays them in the table -->
 		  <td align="left">Username</td>
 		  <td align="right"><?php 
 	  $result=mysqli_query($db, "select c_username from customers where c_username = '$c_username'");
@@ -71,7 +72,7 @@ $(function() {
 	  echo trim($row['c_username']);?></td>
 		</tr>
 		<tr>
-		<!-- fetches the first names of customers from the mysql database and displays them in the table -->
+	  	<!-- fetches the first names of customers from the mysql database and displays them in the table -->
 		  <td align="left">First Name</td>
 		  <td align="right"><input type="text" name="first" required="required" value="<?php 
 	  $result=mysqli_query($db, "select first from customers where c_username = '$c_username'");
@@ -80,7 +81,7 @@ $(function() {
 	?>"></td>
 		</tr>
 		<tr>
-		<!-- fetches the last names of customers from the mysql database and displays them in the table -->
+	  <!-- fetches the last names of customers from the mysql database and displays them in the table -->
 		  <td align="left">Last Name</td>
 		  <td align="right"><input type="text" name="last" required="required" value="<?php 
 	  $result=mysqli_query($db, "select last from customers where c_username = '$c_username'");
@@ -89,7 +90,7 @@ $(function() {
 	?>"></td>
 		</tr>
 		<tr>
-		<!-- fetches the addresses of customers from the mysql database and displays them in the table -->
+	  <!-- fetches the addresses of customers from the mysql database and displays them in the table -->
 		  <td align="left">Address</td>
 		  <td align="right"><input type="text" name="address" required="required" value="<?php 
 	  $result=mysqli_query($db, "select address from customers where c_username = '$c_username'");
@@ -98,7 +99,7 @@ $(function() {
 	?>"></td>
 		</tr>
 		<tr>
-		<!-- fetches the cities of customers from the mysql database and displays them in the table -->
+	  <!-- fetches the cities of customers from the mysql database and displays them in the table -->
 		  <td align="left">City</td>
 		  <td align="right"><input type="text" name="city" required="required" value="<?php 
 	  $result=mysqli_query($db, "select city from customers where c_username = '$c_username'");
@@ -107,6 +108,7 @@ $(function() {
 	?>"></td>
 		</tr>
 		<tr>
+	  <!-- fetches the states of customers from the mysql database and displays them in the table -->
 		  <td align="left">State</td>
 		  <td align="right"><input type="text" name="state" required="required" maxlength="2" value="<?php 
 	  $result=mysqli_query($db, "select state from customers where c_username = '$c_username'");
@@ -115,7 +117,7 @@ $(function() {
 	?>"></td>
 		</tr>
 		<tr>
-		<!-- fetches the zipcodes of customers from the mysql database and displays them in the table -->
+	  <!-- fetches the zipcodes of customers from the mysql database and displays them in the table -->
 		  <td align="left">Zipcode</td>
 		  <td align="right"><input id="zipcode" type="text" name="zipcode" required="required" value="<?php 
 	  $result=mysqli_query($db, "select zipcode from customers where c_username = '$c_username'");
@@ -124,8 +126,8 @@ $(function() {
 	?>"></td>
 		</tr>
 		<tr>
-		<!-- fetches the phone numbers of customers from the mysql database and displays them in the table -->
-		  <td align="left">Phone</td>
+	  <!-- fetches the phone numbers of customers from the mysql database and displays them in the table -->
+		  <td align="left">Phone Number</td>
 		  <td align="right"><input id="phone" type="text" name="phone" required="required" value="<?php 
 	  $result=mysqli_query($db, "select phone from customers where c_username = '$c_username'");
 	  $row=mysqli_fetch_assoc($result);
@@ -133,8 +135,8 @@ $(function() {
 	?>"></td>
 		</tr>
 		<tr>
-		<!-- fetches the license numbers of customers from the mysql database and displays them in the table -->
-		  <td align="left">License</td>
+	  <!-- fetches the license numbers of customers from the mysql database and displays them in the table -->
+		  <td align="left">License Number</td>
 		  <td align="right"><input type="text" name="license" required="required" value="<?php 
 	  $result=mysqli_query($db, "select license from customers where c_username = '$c_username'");
 	  $row=mysqli_fetch_assoc($result);
@@ -142,7 +144,7 @@ $(function() {
 	?>"></td>
 		</tr>
 		<tr>
-		<!-- fetches the license states of customers from the mysql database and displays them in the table -->
+	  <!-- fetches the license states of customers from the mysql database and displays them in the table -->
 		  <td align="left">License State</td>
 		  <td align="right"><input type="text" name="license_state" required="required" maxlength="2" value="<?php 
 	  $result=mysqli_query($db, "select license_state from customers where c_username = '$c_username'");

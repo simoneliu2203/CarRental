@@ -1,4 +1,5 @@
 <?php 
+	// links overview.php to employeeAccessControl.php
 	ob_start();
 	include('employeeAccessControl.php');
 ?>
@@ -24,6 +25,7 @@
 ?>
 
 <style>
+	
 /* sets the style for the buttons */
 .button {
     border: none;
@@ -69,7 +71,7 @@ body
 	
 }	
 
-/* sets the style of the table */	
+/* sets the style of the table */
  #table{
 	 margin-top: 50px; 
 	 margin-left: 5% ;
@@ -93,7 +95,7 @@ body
 	opacity: 0.9;
 	}
 
-/* sets the style for the background behind the button at the bottom of the input table */		
+/* sets the style for the background behind the button at the bottom of the input table */	
  #boxc3{
 	background-color: ghostwhite; 
 	border: none;
@@ -104,7 +106,7 @@ body
 </style>
 
 <!-- set title of the page -->
-<h2> Profit has made </h2>
+<h2> Total Profit Made </h2>
 
 <?php
 	// call stored procedure totalProfit() from the mysql database
@@ -120,18 +122,18 @@ body
     <tr>
 	<!--First box-->
       <td>
-	  <!-- set style of box -->
+       <!-- set style of box -->
         <table id="table" width="300" height="300" border="1" style="border-radius: 20px">
           <tbody>           
             <tr>
-			<!-- set style of title of the box -->
+             <!-- set style of title of the box -->
               <td id="boxc1" colspan="3" style="border:none; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="5" color="green" align="center">Number of Customers</td>
               </tr>
               
             <tr>
               <td id="boxc2">
 				<?php 
-				// call stored function customerCount() from the mysql database to show total number of customers in the system
+				  // call stored function customerCount() from the mysql database to show total number of customers in the system
 				  $result=mysqli_query($db, "select customerCount();");
 				  $row=mysqli_fetch_assoc($result); 
 				  echo '<font color=red size=10> '.$row['customerCount()'].'</font>';
@@ -139,7 +141,7 @@ body
 			  </td>
               </tr>           
             <tr>
-			<!-- set style of submit button -->
+             <!-- set style of submit button -->
               <td id="boxc3" colspan="2"><input type="submit" name="customer_detail" value="Detail" class="button button1"></td>
             </tbody>
           </table>
@@ -147,17 +149,17 @@ body
 		
 		<!--Second box-->
       <td>
-	  <!-- set style of box -->
+       <!-- set style of box -->
         <table id="table" width="300" height="300" border="1" style="margin-left: 80px; border-radius: 20px">
           <tbody>
             <tr>
-			<!-- set style of title of the box -->
+             <!-- set style of title of the box -->
               <td id="boxc1" colspan="3" style="border:none; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="5" color="green" align="center">Number of Vehicles</td>
             </tr>
             <tr>
               <td id="boxc2">
 				<?php 
-				// call stored function vehicleCount() from the mysql database to show total number of vehicles in the system
+				  // call stored function vehicleCount() from the mysql database to show total number of vehicles in the system
 				  $result=mysqli_query($db, "select vehicleCount();");
 				  $row=mysqli_fetch_assoc($result); 
 				  echo '<font color=red size=10> '.$row['vehicleCount()'].'</font>';
@@ -166,24 +168,24 @@ body
             </tr>
                    
             <tr>
-			<!-- set style of submit button -->
+             <!-- set style of submit button -->
               <td id="boxc3" colspan="2"><input type="submit" name="vehicle_detail" value="Detail" class="button button1"></td>
               
           </table>
        </td>
 	<!--Third box-->
       <td>
-	  <!-- set style of box -->
+       <!-- set style of box -->
         <table id="table" width="300" height="300" border="1" style="margin-left: 80px; border-radius: 20px">
           <tbody>
             <tr>
-			<!-- set style of title of the box -->
+             <!-- set style of title of the box -->
               <td id="boxc1" colspan="3" style="border:none; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="5" color="green" align="center">Number of Bookings</td>
             </tr>
             <tr>
               <td id="boxc2">
 				<?php 
-				// call stored function vehicleCount() from the mysql database to show total number of vehicles in the system
+				  // call stored function vehicleCount() from the mysql database to show total number of vehicles in the system
 				  $result=mysqli_query($db, "select bookingCount();");
 				  $row=mysqli_fetch_assoc($result); 
 				  echo '<font color=red size=10> '.$row['bookingCount()'].'</font>';
@@ -192,7 +194,7 @@ body
             </tr>
                    
             <tr>
-			<!-- set style of submit button -->
+             <!-- set style of submit button -->
               <td id="boxc3" colspan="2"><input type="submit" name="booking_detail" value="Detail" class="button button1"></td>
               
           </table>

@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	// if the user login, link map.php to headerLogin.php
+	// if the user is in session, link map.php to headerLogin.php
 	if (isset($_SESSION['username'])) {
 		$username = $_SESSION['username'];
 		include('headerLogin.php');

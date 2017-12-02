@@ -1,11 +1,11 @@
 <?php 
-	//if user is logged in as an employee, makes sure that the employee settings are in session
+	//if user is logged in as an employee, makes sure that the customer settings are in session
 	session_start(); 
 	if (!isset($_SESSION['employee']))
 	{
 		header ('location: index.php');
 	}
-	
+
 	//fetches information about style of the login header from headerLogin.php
 	if (isset($_SESSION['username'])) {
 		$username = $_SESSION['username'];

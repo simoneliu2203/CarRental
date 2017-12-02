@@ -10,6 +10,7 @@
 		// links guestPay.php to header.php if username not in session
 		include('header.php');
 	}
+
 	// sets default time
 	date_default_timezone_set('America/New_York');
 
@@ -17,7 +18,7 @@
 
 
 <?php 
-// links guestPay.php to confirmPaying.php and confirmInfo.php if username in session
+	// links guestPay.php to confirmPaying.php and confirmInfo.php if username in session
 	if (isset($_SESSION['username'])) {
 		include('confirmPaying.php');
 		include('confirmInfo.php'); 

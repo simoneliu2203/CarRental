@@ -1,11 +1,12 @@
 <?php 
 	session_start();
-	// if user logins, then link searchHandler.php to headerLogin.php
+	// if user is in session, then link searchHandler.php to headerLogin.php
 	if (isset($_SESSION['username'])) {
 		$username = $_SESSION['username'];
 		include('headerLogin.php');
 	}
 	else {
+		// else link to header.php
 		include('header.php');
 	}
 	// set default time zone
@@ -82,8 +83,8 @@
 <h2>Car Selection</h2>
 <p>To rent a car, please login</p>
 
-<?php	
-	// settings for pick up and drop off			
+<?php
+	// settings for pick up and drop off
 	if(isset($_POST["search"])){
 		$pickup = date('Y-m-d',strtotime($_POST['pickup']));
 		$dropoff = date('Y-m-d',strtotime($_POST['dropoff']));

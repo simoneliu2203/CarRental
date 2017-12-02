@@ -6,7 +6,9 @@
 <title>Seahawk Rent-A-Car </title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
+
 /* sets the style for the buttons */
 .button {
     border: none;
@@ -35,7 +37,7 @@
     color: antiquewhite;
 	border: 2px solid white;
 }
-
+	
 /* sets the style of the table */
  #table{
 	 margin-top: 20px; 
@@ -87,30 +89,29 @@
 <script src="jQueryAssets/jquery.ui-1.10.4.slider.min.js"></script>
 </head>
 
-
 <!-- style format for the table -->
 <form method="post" action="searchHandler.php">
 <table width="400" height="300" border="1" id="table">
   <tbody>
     <tr>
-	<!-- style format for the title font for the table -->
-      <td id="boxc1" colspan="3" style="font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="8" color="red" align="center">Select date</td>
+     <!-- style format for the title font for the table -->
+      <td id="boxc1" colspan="3" style="font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="8" color="red" align="center">Select Date</td>
     </tr>
     <tr>
-	<!-- style format for the Pick-up option -->
+     <!-- style format for the Pick-up option -->
       <td id="boxc2" colspan="2"><strong>Pick-up: </strong></td>
       <td id="boxc2"><input style="text-align: center" type="text" name="pickup" placeholder="mm/dd/yyyy" id="from" required="required" onkeydown="return false"></td>
     </tr>
     <tr>
-	<!-- style format for the Drop-off option -->
+     <!-- style format for the Drop-off option -->
       <td id="boxc2" colspan="2"><strong> Drop-off:</strong></td>
       <td id="boxc2"><input style="text-align: center" type="text" name="dropoff" placeholder="mm/dd/yyyy" id="to" required="required" onkeydown="return false"></td>
     </tr>
 	 <tr>
-	 <!-- style format for the Sorted by option -->
+     <!-- style format for the Sorted by option -->
       <td id="boxc2" colspan="2"><strong>Sorted by:</strong></td>
       <td id="boxc2">
-	  <!-- attributes for 'Sorted by' option -->
+         <!-- attributes for 'Sorted by' option -->
           <select name="sorted">
             <option value="rate">Rate</option>
             <option value="brand">Brand</option>
@@ -119,7 +120,7 @@
         </td>
     </tr>
     <tr>
-	<!-- set style for search button -->
+     <!-- set style for search button -->
       <td id="boxc3" colspan="3"><button class="button button1" type="submit" id="submit" name="search">Search</button></td>
     </tr>
   </tbody>
@@ -129,7 +130,7 @@
 
 </body>
 
-<!-- set up calendar (cannot pick the date in the past, and dropoff date has to be after pickup date -->
+<!-- set up calendar date options -->
 <script>
 $(function () {
     $("#from").datepicker({

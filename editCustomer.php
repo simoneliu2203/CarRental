@@ -1,4 +1,5 @@
 <?php 
+	// links editCustomer.php to employeeAccessControl.php
 	ob_start();
 	include('employeeAccessControl.php');
 ?>
@@ -61,7 +62,7 @@
 					
 	?>	
 					<td>
-					<!-- link to customer.php if user wants to update customer info -->
+						<!-- link to customer.php if user wants to update customer info -->
 						<a href="customer.php?id=<?php echo $row['c_username']?>">Update</a>
 				   </td> 	
 				<?php						

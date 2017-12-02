@@ -1,8 +1,10 @@
 <?php
+	// links login.php to header.php
 	include("header.php");
 ?>
 
 <style>
+	
 /* sets the style for the buttons */
 .button {
     border: none;
@@ -31,7 +33,7 @@
     color: blue;
 	border: 2px solid black;
 }
-
+	
 /* sets the style of the table */
  #table{
 	 margin-top: 50px; 
@@ -56,7 +58,7 @@
 	opacity: 0.9;
 
 	}
-
+	
 /* sets the style for the background behind the button at the bottom of the input table */
  #boxc3{
 	background-color: palegreen; 
@@ -72,25 +74,25 @@
 <table id="table" width="500" height="350" border="1" style="margin-top: 50px; margin-left: auto; margin-right: auto; border-radius: 20px">
   <tbody>
     <tr>
-	<!-- style format for the title font for the Login table -->
+      <!-- style format for the title font for the Login table -->
        <td id="boxc1" colspan="3" style="border:none; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="7" color="red" align="center">Login</td>
     </tr>
     <tr>
-	<!-- style format for the Username option and box -->
+     <!-- style format for the Username option and box -->
       <td id="boxc2" align="right"><strong>Username</strong></td>
-      <td id="boxc2"><input type="text" id="username" name="username" required="required"></td>
+      <td id="boxc2"><input type="text" id="username" name="username"></td>
     </tr>
     <tr>
-	<!-- style format for the Password option and box -->
+     <!-- style format for the Password option and box -->
       <td id="boxc2" align="right"><strong>Password</strong></td>
-      <td id="boxc2"><input type="password" id="password" name="password" required="required"></td>
+      <td id="boxc2"><input type="password" id="password" name="password"></td>
     </tr>
     <tr>
-	<!-- set style for the submit button -->
+     <!-- set style for the submit button -->
       <td colspan="2"><input type="submit" name="login" id="submit" value="Login" class="button button1"></td>
     </tr>
     <tr>
-	<!-- if user doesn't have an account, they are suggested to sign up, which is linked to register.php file -->
+     <!-- if user doesn't have an account, they are suggested to sign up, which is linked to register.php file -->
       <td colspan="2" id="boxc3"><font> Don't have an account? </font><a href="register.php">Sign up</a></td>
     </tr>
   </tbody>
@@ -98,6 +100,7 @@
 </form>
 
 <?php
+	// links to loginHandler.php
 	include("loginHandler.php");
 ?>
 

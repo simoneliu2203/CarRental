@@ -1,4 +1,5 @@
 <?php 
+	// links manageBooking.php to employeeAccessControl.php
 	ob_start();
 	include('employeeAccessControl.php');
 ?>
@@ -9,6 +10,7 @@
 <div style="text-align:left; margin-left:10px"><a href="employeeMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to the Menu</a></div>
 
 <style>
+	
 /* sets the style for the buttons */
 .button {
     border: none;
@@ -57,7 +59,7 @@
 
 
 <?php 	
-// if the status of a booking is approved, then the booking status will be updated in the mysql database as well
+	// if the status of a booking is approved, then the booking status will be updated in the mysql database as well
 	if(isset($_POST["approved"])){
 		$id = $_POST['approved'];
 		$query = "update booking set status = 'approved' where booking_id = '$id'";
@@ -108,12 +110,11 @@ function declineConfirm()
 			<th width='10%' bgcolor=black style='color:white; padding:15px'>Option</th>
 			</tr>";
 		
-			// get the booking info from the mysql database
+			// connect the mysql database to the code
 			$rented_car = mysqli_query($db,"SELECT * FROM get_quote natural join cars");
 			
+			// display attributes of customer
 			$today =  date_create();
-			
-			// display attributes of booking table
 			if (mysqli_num_rows($rented_car) != 0){
 				while($row = mysqli_fetch_assoc($rented_car)){
 					echo "<tr>" . "<td>" . '<img src="data:image/jpeg;base64,'.base64_encode( $row['img'] ).'" heigh="100" width="100"/>'. "</td>";

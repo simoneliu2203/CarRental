@@ -1,4 +1,5 @@
 <?php 
+	// links vehicle.php to employeeAccessControl.php
 	include('employeeAccessControl.php');
 ?>
 
@@ -31,9 +32,10 @@
 		
 		$file_extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);		
 		
+		
 		if (empty($_FILES['img']['name'])){
 			// once car is updated, the updated info gets sent to the mysql database
-			echo "<div align='center'>Car updated</div>";
+			echo "<div align='center'>Car Updated</div>";
 			$query = "update cars set brand = '$brand', model = '$model', type = '$type', year = '$year', color = '$color',rate = '$rate', mileage = '$mileage', capacity = '$capacity', available = '$available' where vin = '$car_id'";
 			mysqli_query($db, $query);
 		}

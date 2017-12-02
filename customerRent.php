@@ -1,9 +1,10 @@
 <?php 
+	// links customerRent.php to customerAccessControl.php
 	include('customerAccessControl.php');
 ?>
 
 <!-- shows that the user is logged in as a customer -->
-<div style="text-align:right; margin-right:20px; color: red">Login as: <?php echo $username?></div>
+<div style="text-align:right; margin-right:20px; color: red">Logged in as: <?php echo $username?></div>
 <!-- takes user back to the customer main menu once they click on it -->
 <div style="text-align:left; margin-left:10px"><a href="customerMenu.php" style="color:blue; font-size:18px;margin-right:5px"> &#8678 Back to Customer Menu</a></div>
 
@@ -100,20 +101,21 @@
         
       </tr>
       <tr>
-	  <!-- sets style of 'pick-up' and 'drop-off' options -->
-      <!-- sets options as required -->
+       <!-- sets style of 'pick-up' and 'drop-off' options -->
+       <!-- sets options as required -->
         <td><input style="text-align: center" type="text" id="from" name="pickup" placeholder="mm/dd/yyyy" required="required" onkeydown="return false"></td>
         <td><input style="text-align: center" type="text" id="to" name="dropoff" placeholder="mm/dd/yyyy" required="required" onkeydown="return false"></td>
         <td>
-		
-		<!-- sets style of 'sorted by' options -->
+        
+         <!-- sets style of 'sorted by' options -->
           <select name="sorted">
             <option value="rate">Rate</option>
             <option value="brand">Brand</option>
             <option value="type">Type</option>
           </select>
         </td>
-		<!-- sets style of search button -->
+		
+        <!-- sets style of search button -->
         <td rowspan="2"><input type="submit" name="search" value="Search"></td>
       </tr>
     </tbody>

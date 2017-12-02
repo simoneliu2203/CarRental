@@ -1,4 +1,4 @@
-<!-- Import libraries, using jQuery library --> 
+<!-- Import libraries using jQuery library --> 
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
 <link href="jQueryAssets/jquery.ui.datepicker.min.css" rel="stylesheet" type="text/css">
@@ -46,15 +46,15 @@
 			<table width="400" height="600" border="1" bordercolor="white" align="center">
 				  <tbody>
 					<tr>
-					  <!-- set title of table -->
+				  	  <!-- set title of table -->
 					  <td colspan="2"><h2>General Information</h2></td>
 					</tr>
 					<tr>
-				<!-- these are attributes that the user can input into the general information table, such as first name, last name, address, etc. -->
-				<!-- the info inputted will be sent to the mysql database with its corresponding attributes -->
-				<!-- if there's already information on the customer in the system, then it fetches the info of the customer from the mysql database and displays it -->
-				<!-- all of the fields will be required before the user continues -->
-					  <td align="left">First name</td>
+				  <!-- these are attributes that the user can input into the general information table, such as first name, last name, address, etc. -->
+				  <!-- the info inputted will be sent to the mysql database with its corresponding attributes -->
+				  <!-- if there's already information on the customer in the system, then it fetches the info of the customer from the mysql database and displays it -->
+				  <!-- all of the fields will be required before the user continues -->
+					  <td align="left">First Name</td>
 					  <td align="right"><input type="text" name="first" required="required" value="<?php 
 				  $result=mysqli_query($db, "select first from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
@@ -62,7 +62,7 @@
 				?>"></td>
 					</tr>
 					<tr>
-					  <td align="left">Last name</td>
+					  <td align="left">Last Name</td>
 					  <td align="right"><input type="text" name="last" required="required" value="<?php 
 				  $result=mysqli_query($db, "select last from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
@@ -102,7 +102,7 @@
 				?>"></td>
 					</tr>
 					<tr>
-					  <td align="left">Phone number</td>
+					  <td align="left">Phone Number</td>
 					  <td align="right"><input id="phone" type="text" name="phone" required="required" value="<?php 
 				  $result=mysqli_query($db, "select phone from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
@@ -110,7 +110,7 @@
 				?>"></td>
 					</tr>
 					<tr>
-					  <td align="left">License number</td>
+					  <td align="left">License Number</td>
 					  <td align="right"><input type="text" name="license" required="required" value="<?php 
 				  $result=mysqli_query($db, "select license from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
@@ -118,7 +118,7 @@
 				?>"></td>
 					</tr>
 					<tr>
-					  <td align="left">License state</td>
+					  <td align="left">License State</td>
 					  <td align="right"><input type="text" name="license_state" required="required" maxlength="2" value="<?php 
 				  $result=mysqli_query($db, "select license_state from cus_info where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
@@ -138,19 +138,22 @@
 	<!-- Second Step -->
 	<!-- Billing info table-->
 	<?php }elseif ($_POST['update']==='Next'){ ?>
-	<!-- set style for billing info table -->
+		
+			<!-- set style for billing info table -->
 			<form action="" method="post">
 			<table width="400" height="500" border="1" bordercolor="white" align="center">
 				  <tbody>
 					<tr>
+				  	  <!-- set title of table -->
 					  <td colspan="2"><h2>Billing Information</h2></td>
 					</tr>
 					<tr>
+
 				  <!-- these are attributes that the user can input into the billing information table, such as card type, credit card number, CVV, etc. -->
 				  <!-- the info inputted will be sent to the mysql database with its corresponding attributes -->
 				  <!-- if there's already information on the customer in the system, then it fetches the info of the customer from the mysql database and displays it -->
 				  <!-- all of the fields will be required before the user continues -->
-					  <td align="left">Type (Master, Visa, eg.)</td>
+					  <td align="left">Card Type (Master, Visa, eg.)</td>
 					  <td align="right"><input type="text" name="type" required="required" value="<?php 
 				  $result=mysqli_query($db, "select type from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
@@ -158,7 +161,7 @@
 				?>"></td>
 					</tr>
 					<tr>
-					  <td align="left">Credit card number</td>
+					  <td align="left">Credit Card Number</td>
 					  <td align="right"><input id="creditcard" type="text" name="creditcard" required="required" value="<?php 
 				  $result=mysqli_query($db, "select creditcard from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
@@ -174,7 +177,7 @@
 				?>"></td>
 					</tr>
 					<tr>
-					  <td align="left">Expire date</td>
+					  <td align="left">Expiration Date</td>
 					  <td align="right"><input type="text" id="datepick" name="exp_date" size="20" required="required" onkeydown="return false" value="<?php 
 				  $result=mysqli_query($db, "select date_format(exp_date, '%m/%d/%Y') as fdate from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
@@ -182,7 +185,7 @@
 				?>"></td>
 					</tr>
 					<tr>
-					  <td align="left">Name on card</td>
+					  <td align="left">Name on Card</td>
 					  <td align="right"><input type="text" name="name" required="required" value="<?php 
 				  $result=mysqli_query($db, "select name from bankaccount where c_username = '$username' ");
 				  $row=mysqli_fetch_assoc($result);
@@ -202,14 +205,15 @@
 	<!-- when the "next" button is hit, the overview for the car rental info is presented to the user for confirmation, such as booking summary, pick-up date, drop-off date, etc -->
 	<?php }elseif ($_POST['update']==='Complete'){ ?>
 			<form action="" method="post">
+			<!-- set style for the table holding information -->
 			<table width="400" height="500" border="1" bordercolor="white" align="center">
 			  <tbody>
 				<tr>
-				<!-- set title of table -->
-				  <td colspan="2"><h2>Booking summary</h2></td>
+			  	<!-- set title of table -->
+				  <td colspan="2"><h2>Booking Summary</h2></td>
 				</tr>
 				<tr>
-				<!-- setup information for bill for the user, which calculates for them their base price, tax, total, etc. -->
+			  	<!-- setup information for bill for the user, which calculates for them their base price, tax, total, etc. -->
 				  <td align="left">Pick-up: <?php echo $pickup?></td>
 				  <td align="right">Drop-off: <?php echo $dropoff?></td>
 				</tr>
@@ -218,7 +222,7 @@
 				  <td align="right"><?php echo $diff->days;?></td>
 				</tr>
 				<tr>
-				  <td align="left">Base price: </td>
+				  <td align="left">Base Price: </td>
 				  <td align="right"><?php echo "$".$days*$rate?></td>
 				</tr>
 				<tr>
@@ -230,7 +234,7 @@
 				  <td align="right"><?php echo "$".($rate*$days+$days*$rate*0.07) ?></td>
 				</tr>
 				<tr>
-				<!-- set up for the "previous" and "confirm" buttons for the user to click on to either go back to the previous page, or confirm their booking request -->
+			  	<!-- set up for the "previous" and "confirm" buttons for the user to click on to either go back to the previous page, or confirm their booking request -->
 				  <td align="left"><input type="submit" name="update" value="Previous"></td>
 				  <td align="right"><input type="submit" name="confirm" value="Confirm"></td>      
 				</tr>
@@ -245,8 +249,8 @@
 
 <?php
 //Nested if statements
-//If user click next, call page profile.php or creditCard.php 
-//this handle updating the profile and credit card info back to the database
+//If user clicks "next" or "complete", call page profile.php or creditCard.php 
+//this handles updating the profile and credit card info back to the database
 
 if(isset($_POST['update'])){
     if($_POST['update'] == "Next"){

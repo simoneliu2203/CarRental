@@ -1,4 +1,5 @@
 <?php 
+	// links employeeMenu.php to employeeAccessControl.php
 	ob_start();
 	include('employeeAccessControl.php');
 ?>
@@ -8,7 +9,7 @@
 
 
 <style>
-
+	
 /* sets the style for the buttons */
 .button {
     border: none;
@@ -37,7 +38,7 @@
     color: antiquewhite;
 	border: 2px solid white;
 }
-
+	
 /* sets the style of the table */
  #table{
 	 margin-top: 50px; 
@@ -62,8 +63,8 @@
 	border: none;
 	padding-left: 25%;
 	}
-
-/* sets the style for the background behind the button at the bottom of the input table */	
+	
+/* sets the style for the background behind the button at the bottom of the input table */
  #boxc3{
 	background-color: dimgray; 
 	border-bottom-left-radius: 15px;
@@ -78,27 +79,27 @@
 <table id="table" width="400" height="400" border="1" style="margin-top: 50px; margin-left: auto; margin-right: auto; border-radius: 20px">
   <tbody>
     <tr>
-	<!-- style format for the title font for the Options table -->
+       <!-- style format for the title font for the Options table -->
        <td id="boxc1" colspan="3" style="border:none; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="7" color="red" align="center">Options</td>
     </tr>
 	<tr>
-	<!-- style format for the font for the Overview option -->
+   		<!-- style format for the font for the Overview option -->
     	<td id="boxc2" colspan="2" align="left" ><input type="radio" name="option" value="overview"><label >Overview</label></input><br><br></td>
     </tr>
     <tr>
-	<!-- style format for the font for the Add Vehicles option -->
+       	<!-- style format for the font for the Add Vehicles option -->
     	<td id="boxc2" colspan="2" align="left" ><input type="radio" name="option" value="add"><label >Add Vehicles</label></input><br><br></td>
     </tr>
     <tr>
-	<!-- style format for the font for the Update Customers option -->
+    	<!-- style format for the font for the Update Customers option -->
 		<td id="boxc2" colspan="2" align="left"><input type="radio" name="option" value="customer"><label >Update Customers</label></input><br><br>
     </tr>
     <tr>
-	<!-- style format for the font for the Manage Bookings option -->
+    	<!-- style format for the font for the Manage Bookings option -->
     	<td id="boxc2" colspan="2" align="left"><input type="radio" name="option" value="booking"><label >Manage Bookings</label></input><br><br>
     </tr>
     <tr>
-	<!-- set style for the submit button -->
+      <!-- set style for the submit button -->
       <td id="boxc3" colspan="2"><input type="submit" name="submit" class="button button1" value="Submit" ></td>
     </tr>
   </tbody>
@@ -108,7 +109,8 @@
 
 
 <?php
-// links employeeMenu.php to addCar.php, overview.php, editCustomer.php, and manageBooking.php
+
+	// links employeeMenu.php to addCar.php, overview.php, editCustomer.php, and manageBooking.php
 		if(isset($_POST['option']) && ($_POST['option']) == "add")
 			header("location: addCar.php");
 		else if(isset($_POST['option']) && ($_POST['option']) == "overview")
