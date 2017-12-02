@@ -12,7 +12,7 @@
 ?>
 
 <style>
-	/* Set up the style for the page with a background image */
+	/* Set up the style for the page */
 	body {
 	margin: 0;
 	padding: 0;
@@ -20,8 +20,8 @@
 	height: 100%;
 	min-height: 600px;
 	min-width: 1000;
-		
-	/* background image set up*/
+	
+	/* background image set up*/	
 	background-image: url(Images/12.png); 
 	background-repeat:no-repeat;
 	background-size:cover;
@@ -36,7 +36,7 @@
 	<h1>About Seahawk Rent-A-Car</h1>
 		<font size="4.5">Seahawk Rent-A-Car aims to revolutionize the car rental industry by providing an updated, streamlined software to manage the car rental process and all of the details it involves. Through seamless integration of client, inventory, and business operations databases, our product will provide a user experience that is fast and easy to use on both the client and administrative ends, while constantly providing the rental agency with up-to-date information on daily operations.</font>
 	<h1>About Us</h1>
-	<font size="4.5">Seahawk Rent-A-Car is currently owned by Simone "Y" Liu, Yujiemi Chisholm, and Yasin Emre Gokce.</font>
+	<font size="4.5">Seahawk Rent-A-Car is currently owned by Simone "Y" Liu, Yujiemi Chisholm, Jacob Pifer, and Zachary Cappellini.</font>
     
 	<p><font size="4.5">Thank you!</font>
 </div>
