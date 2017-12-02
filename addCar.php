@@ -1,4 +1,5 @@
 <?php 
+	// links addCar.php to employeeAccessControl.php
 	include('employeeAccessControl.php');
 ?>
 
@@ -39,7 +40,7 @@
 </style>
 
 <?php
-	/* Add the information that the user inputs into the mysql database */
+	/* connects the informaiton that the user inputs into the mysql database */
 	$errors = array();
 	if(isset($_REQUEST['submit'])){
 		$vin = mysqli_real_escape_string($db, $_POST['vin']);
@@ -101,6 +102,7 @@
 <style>
 body
 {
+	/* sets the style of the addCar page */
 	margin: 0;
 	padding: 0;
 	width: 100%;
@@ -115,6 +117,7 @@ body
 }	
 	
  #table{
+	 /* sets the style of the table in which the user will input information */
 	 margin-top: 50px; 
 	 margin-left: 5% ;
 	 border: 4px solid black; 
@@ -122,6 +125,7 @@ body
 	 border-collapse: separate;
 	}
  #boxc1{
+	/* sets the style for the background behind the title within the input table */
 	background-color: lightgray; 
 	opacity: 1;
 	border-top-left-radius: 20px;
@@ -129,25 +133,29 @@ body
 	}
 
  #boxc2{
+	/* sets the style for the background behind the body of the table whithin the input table */
 	background-color: ghostwhite; 
 	border: none;
 	opacity: 0.9;
 	}
 	
  #boxc3{
+	/* sets the style for the background behind the add button at the bottom of the input table */
 	background-color: dimgray; 
 	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;
 	}	
 </style>
 
+<!-- sets the style for the table as well as the title of the table,"Add a Car" --> 
 <form enctype="multipart/form-data" method="post" action="">
 <table id="table" width="600" height="800" border="1" style="margin-top: 50px; margin-left: auto; margin-right: auto; border-radius: 20px">
   <tbody>
     <tr>
-       <td id="boxc1" colspan="3" style="border:none; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="7" color="red" align="center">Add a car</td>
+       <td id="boxc1" colspan="3" style="border:none; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'"><font size="7" color="red" align="center">Add a Car</td>
     </tr>
     <tr>
+     <!-- sets the inputs for each of the attributes (VIN, brand, model, etc) that the user will have to input into the system. Also makes the attributes required -->
       <td id="boxc2" align="right"><strong>VIN</strong></td>
       <td id="boxc2"><input type="text" id="vin" name="vin" size="25" required='required'></td>
     </tr>
@@ -187,7 +195,8 @@ body
       <td id="boxc2" align="right"><strong>Image</strong></td>
       <td id="boxc2" align="center"><input type="file" name="img" required='required'></td>
     </tr>
-    <tr>     
+    <tr>   
+     <!-- sets the style for the "add" button -->  
       <td colspan="2" id="boxc3"><input type="submit" name="submit" id="submit" value="Add" class="button button1"></td>
     </tr>
    
